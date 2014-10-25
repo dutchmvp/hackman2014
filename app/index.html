@@ -16,11 +16,15 @@
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-cloak>
-    <main ng-controller="lbMainController as MainCtrl">
-        <section ng-if="MainCtrl.state == 0">Start Game</section>
-        <section ng-if="MainCtrl.state == 1">Waiting for players</section>
-        <section ng-if="MainCtrl.state == 2">Playing</section>
-        <section ng-if="MainCtrl.state == 3">Winner is...</section>
+    <main ng-controller="ctrlApp">
+    	<header>
+    		<h1>This is the header</h1>
+    	</header>
+		<div ng-view>
+		</div>
+		<footer>
+			<h2>This is the Footer</h2>
+		</footer>
     </main>
 
     <script src="bower_components/angular/angular.js"></script>
@@ -30,9 +34,12 @@
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
 
     <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
     <script src="js/firebase.utils.js"></script>
 
     <!-- Leaderboard -->
+    <script src="js/leaderboard/module.js"></script>
+    <script src="js/leaderboard/controller.js"></script>
     <script src="js/leaderboard/module.js"></script>
     <script src="js/leaderboard/controller.js"></script>
 </body>
