@@ -16,4 +16,4 @@ angular.module('FSUGame.controllers', [])
             var hours = Math.floor(minutes / 60);
             return (z(minutes) + ':' + z(seconds));
         };
-    });
+    }); 
