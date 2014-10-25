@@ -32,15 +32,8 @@ angular.module('FSUGame.controllers')
             if($scope.counter !== 0) {
                 $scope.counter--;
                 $scope.gameRunning = true;
-                
-                 $scope.players[0] = 
-                    {
-                        name:'jason staerck',
-                        avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
-                        score: $scope.getRandomSpan()
-                    }
-                     
-                
+                $scope.playersAmount = $scope.players.length;
+               
                 
                 if($scope.counter < 30) {
                    

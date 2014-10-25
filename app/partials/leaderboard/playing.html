@@ -1,9 +1,22 @@
 <section id="leaderBoardView" layout-padding>
    
    <div class="row" layout="horizontal" flex style="padding-bottom:10px;">    
-        <div id="specialsArea" flex>
+        <div id="specialsArea" flex layout="horizontal" layout-align="space-between">
+         
+            <div class="gameControls" layout="horizontal" flex="60" layout-align="center center">
         
-
+                <md-button class="md-theme-green" ng-click="startGame()" flex="50" >Start the game</md-button>
+                
+                <md-button class="restartGame md-theme-green" ng-click="restartGame()" flex="50" >Restart the game</md-button>
+                
+            </div> 
+            
+            <div class="gameInfo" layout="vertical" layout-align="center center" flex="40">
+                   
+                 <p>Players in game {{playersAmount}}</p>  
+                   
+            </div>  
+             
         </div>
 
         <div id="timerArea" flex="40" layout="vertical" layout-align="center center" ng-class="">

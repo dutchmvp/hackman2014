@@ -73,7 +73,13 @@ body {
         }
         
         #specialsArea {
-            background: #e1f5fe;
+        
+                .gameControls {
+                    
+                    md-button {
+                        height:40px;
+                    }
+                }
              
         }
     }
