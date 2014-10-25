@@ -1,54 +1,123 @@
 angular.module('FSUGame.controllers')
 
-
-    .controller('ctrlLeaderboard', ['$scope','$interval', function ($scope,$interval) {
-		/*
-         * States:
-         *  - 0: Click to start game
-         *  - 1: Waiting room
-         *  - 2: Playing
-         *  - 3: Game end
-         */
-
-        $scope.state = 0;
-        
-        // when user clicks start game - create game in firebase
-        $scope.startGame = function() {
-               
+    .controller('ctrlCreateGame', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
+		$rootScope.game = {
+            $id: null,
+            name: null,
+            gameStatus: 'Lobby',
+            timeLeft: 10
         };
         
-        // counter down timer //
-        $scope.counter = 180;
-        $scope.nearEnd = false;
-        
-        $scope.winner = {}
-        $scope.gameRunning = false;
-      
-        $scope.getRandomSpan = function(){
-          return Math.floor(Math.random() * 50) + 1
-        }
-                var start = $interval(function() {
-
-            if($scope.counter !== 0) {
-                $scope.counter--;
-                $scope.gameRunning = true;
-                $scope.playersAmount = $scope.players.length;
-               
+        var gameNameCheck = function(gameName) {
+            if (gameName && gameName.length > 3) {
+                document.getElementById('createGame').classList.add('enabled');
+                document.getElementById('gameNameError').style.display = 'none';
                 
-                if($scope.counter < 30) {
-                   
-                    $scope.nearEnd = true;
-                    
-                } 
-            } else {
-                $scope.gameRunning = false;
-                $scope.winner.name = 'peter';
-                $interval.cancel(start);
-                
+                return true;
             }
+            else if (gameName && document.getElementById('createGame')) {
+                document.getElementById('createGame').classList.remove('enabled');
+                
+                document.getElementById('gameNameError').style.display = 'block';
+                document.getElementById('gameNameError').innerHTML = 'Your name needs to be more than 3 characters';
+            }
+            
+            return false;
+        };
         
-        },180);
+		$rootScope.$watch('game.name', gameNameCheck());
         
-        // ******************* //
-    }]);
+        $scope.startGame = function() {
+            if (gameNameCheck($rootScope.game.name)) {
+                // create game
+                GameService.create($rootScope.game).then(function(response) {
+                    $rootScope.game.$id = response.$id;
+                                        
+                    $location.path('/leaderboard/' + $rootScope.game.$id);
+                });
+            }
+        };
+    }])
 
+    .controller('ctrlLeaderboard', ['$scope', '$rootScope', 'GameService', '$location', '$routeParams', '$timeout', function ($scope, $rootScope, GameService, $location, $routeParams, $timeout) {
+        if (!$routeParams.gameId) {
+            // user has no details or no game ID - cannot join
+            $location.path('/leaderboard/');
+            return;
+        }
+        
+        var refreshInterval;
+        
+        $scope.annouceWinner = function() {
+            $scope.winner.name = 'Ben';  
+        };
+        
+        $scope.players = [];
+        $scope.nearEnd = false;
+        $scope.winner = { };
+        
+        // get game from URL
+        GameService.get($routeParams.gameId).then(function(response) {
+            if (!response) {
+                // game does not exist
+                $location.path('/leaderboard/');
+                return;   
+            }
+            
+            $rootScope.game = response;
+
+            // on player join
+            GameService.onJoin($rootScope.game.$id, function(player) {
+                // temp add avator
+                player.client.avatar = 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png';
+
+                $scope.players.push(player.client);
+            });
+            
+            if ($rootScope.game.gameStatus == 'Winner') {
+                $scope.annouceWinner();
+            }
+
+            $scope.startGame = function() {
+                $rootScope.game.gameStatus = 'Waiting';
+                
+                GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                 
+                    var timeoutFunc = function() {
+                        $rootScope.$apply(function(){
+                            $rootScope.game.timeLeft--;
+                        });
+                        
+                        if ($rootScope.game.timeLeft < 20) {
+                            $scope.nearEnd = true;   
+                        }
+
+                        // time has run out!
+                        if ($rootScope.game.timeLeft < 1) {
+                            if ($rootScope.game.gameStatus == 'Waiting') {
+                                // start game
+                                $rootScope.game.timeLeft = 10;
+                                $rootScope.game.gameStatus = 'Playing';
+                            }
+                            else {
+                                // game end
+                                $rootScope.game.gameStatus = 'Winner';
+                            }
+                        }
+
+                        // update game for everyone
+                        GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                        
+                            if ($rootScope.game.gameStatus != 'Winner') {
+                                $timeout(timeoutFunc, 1000);
+                            }
+                            else {
+                                // send to winner page
+                                $scope.annouceWinner();
+                            }
+                        });
+                    };
+
+                    $timeout(timeoutFunc, 1000);
+                });
+            };
+        });
+    }]);
