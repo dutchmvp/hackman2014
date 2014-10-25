@@ -8,6 +8,8 @@ angular.module('FSUGame.controllers')
             timeLeft: 10
         };
         
+        
+        
         var gameNameCheck = function(gameName) {
             if (gameName && gameName.length > 3) {
                 document.getElementById('createGame').classList.add('enabled');
@@ -56,6 +58,7 @@ angular.module('FSUGame.controllers')
         $scope.nearEnd = false;
         $scope.winner = { };
         
+      
         // get game from URL
         GameService.get($routeParams.gameId).then(function(response) {
             if (!response) {
@@ -79,6 +82,8 @@ angular.module('FSUGame.controllers')
             }
 
             $scope.startGame = function() {
+                
+                if($scope.players.length >= 1) {
                 $rootScope.game.gameStatus = 'Waiting';
                 
                 GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                 
@@ -115,9 +120,15 @@ angular.module('FSUGame.controllers')
                             }
                         });
                     };
-
+                        
                     $timeout(timeoutFunc, 1000);
+                    
+              
                 });
+                    
+                      } else {
+                        alert('not enough players');
+                     }
             };
         });
     }]);

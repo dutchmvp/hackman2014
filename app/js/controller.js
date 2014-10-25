@@ -1,6 +1,16 @@
 angular.module('FSUGame.controllers', [])
 
     .controller('ctrlApp', ['$scope','$rootScope', function ($scope,$rootScope) {
+        
+        
+        function is_touch_device() {
+          return !!('ontouchstart' in window);
+        }
+        
+            
+        if(!is_touch_device()){
+            $scope.gamedevice = 'desktop';
+        }
 
     }])
 
