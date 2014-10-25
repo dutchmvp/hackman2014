@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers', 'ngMaterial'])
+angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGame.services'])
 
-.config(function ($routeProvider) {
+    .constant('FIREBASE_URI', 'https://hackman2014.firebaseio.com/')
+
+    .config(function ($routeProvider) {
         $routeProvider.when('/', {
             controller: 'ctrlHome',
             templateUrl: 'partials/home.html'
@@ -11,7 +13,7 @@ angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers', 'ngMaterial'])
             controller: 'ctrlJoinGame',
             templateUrl: 'partials/mobile/joinGame.html'
         })
-        .when('/startGame', {
+        .when('/startGame/:gameId', {
             controller: 'ctrlStartGame',
             templateUrl: 'partials/mobile/game.html'
         })

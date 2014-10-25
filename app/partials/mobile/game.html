@@ -1,10 +1,13 @@
 <div class="joinGame">
-	<h2>{{Game}} is about to start</h2>
+    <div ng-if="game.gameStatus == 'Lobby'">
+        <p>Waiting for game to start</p>
+    </div>
+    
+	<div ng-if="game.gameStatus != 'Lobby'">
+        <h2>Get ready!</h2>
 	
-	<p class="timer">
-		{{game.timeLeft}}
-	</p>
-	<p class="peopleInGame">
-		1/{{game.peoplePlaying}} people playing
-	</p>
+        <p class="timer">
+            {{game.timeLeft}}
+        </p>
+    </div>
 </div>

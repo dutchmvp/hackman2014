@@ -1,44 +1,89 @@
 angular.module('FSUGame.controllers')
 
-    .controller('ctrlJoinGame', ['$scope', '$location', function ($scope, $location) {
-		$scope.games = new Array();
-		$scope.games.push( { "ID" : 1, "name" : "Team FSU", "status" : "Waiting" } );
-		$scope.games.push( { "ID" : 2, "name" : "The Girls", "status" : "Playing" } );
-		$scope.games.push( { "ID" : 3, "name" : "My Way", "status" : "Playing" } );
-		$scope.games.push( { "ID" : 4, "name" : "Gangsters", "status" : "Waiting" } );
-		
-		$scope.startTheGame = function (name) {
-			$scope.$parent.Game = name;
-			$location.path("/startGame");
-		}
-		
-		console.log($scope.$parent.Game);
+    .controller('ctrlJoinGame', ['$scope', '$rootScope', '$location', 'GameService', 'ClientService', function ($scope, $rootScope, $location, GameService, ClientService) {
+        $scope.state = 0;
+        $rootScope.connectionId = null;
+        
+        // Create player details
+        $rootScope.user = {
+            $id: null,
+            name: null,
+            score: 0
+        };
+        
+        var usernameCheck = function(username) {            
+            if (username && username.length > 3) {
+                document.getElementById('continueButton').classList.add('enabled');
+                document.getElementById('usernameError').style.display = 'none';
+                
+                return true;
+            }
+            else if (document.getElementById('continueButton')) {
+                document.getElementById('continueButton').classList.remove('enabled');
+                
+                document.getElementById('usernameError').style.display = 'block';
+                document.getElementById('usernameError').innerHTML = 'Your username needs to be more than 3 characters';
+            }
+            
+            return false;
+        };
+        
+		$rootScope.$watch('user.name', usernameCheck());
+        
+        $scope.continueButton = function() {
+            if (usernameCheck($scope.user.name)) {
+                $scope.state = 1;
+            }
+        };
+        
+        // Lobby pick a game
+        $scope.games = GameService.all();
+        
+        $scope.joinGame = function(gameId) {  
+            // create client
+            ClientService.create($rootScope.user).then(function(response) {
+                $rootScope.user.$id = response.name();
+                $location.path('/startGame/' + gameId);
+            });
+        };
     }])
-    .controller('ctrlStartGame', ['$scope', '$location', function ($scope, $location) {
-		$scope.game = {};
-		$scope.game.timeLeft = 10;
-		$scope.game.peoplePlaying = 5;
-		$scope.game.gameStatus = "Waiting";
-		
-		
-		$scope.$watch('game.gameStatus', function() {
-			if ($scope.game.gameStatus == "Playing") {
-				var goToGame = Math.floor((Math.random() * 10) + 1);
-				clearInterval(refreshInterval);
-				$location.path("/game/" + goToGame);
-			}
-		});
-		   
-		var refreshInterval = setInterval(function() {
-			$scope.$apply(function(){
-				$scope.game.timeLeft--;
-			});
-			if ($scope.game.timeLeft < 1) {
-				$scope.game.gameStatus = "Playing";
-			}
-			console.log('tick tock' + $scope.game.timeLeft);
-		}, 100);
-		
-		console.log('The GAME IS :' + $scope.$parent.Game);
-		
+
+    .controller('ctrlStartGame', ['$scope', '$rootScope', '$location', '$routeParams', 'GameService', function ($scope, $rootScope, $location, $routeParams, GameService) {        
+        if (!$rootScope.user || $rootScope.user.$id == null || !$routeParams.gameId) {
+            // user has no details or no game ID - cannot join
+            $location.path('/mobile/');
+            return;
+        }
+        
+        // join game
+        GameService.join($routeParams.gameId, $rootScope.user).then(function(response) {
+            $scope.connectionId = response.name();
+
+            // get game details
+            $scope.game = GameService.get($routeParams.gameId);
+            
+            $scope.$watch('game.gameStatus', function(value) {
+                switch(value) {
+                    case 'Waiting':
+                        var refreshInterval = setInterval(function() {
+                            $scope.$apply(function(){
+                                $scope.game.timeLeft--;
+                            });
+
+                            if ($scope.game.timeLeft < 1) {
+                                $scope.game.gameStatus = 'Playing';
+                            }
+                        }, 1000);
+                    break;
+                    case 'Playing':
+                        var goToGame = Math.floor((Math.random() * 10) + 1);
+                        clearInterval(refreshInterval);
+                        $location.path('/game/' + goToGame);
+                    break;
+                    default:
+                        // just wait
+                    break;
+                };
+            });
+        });
     }]);
