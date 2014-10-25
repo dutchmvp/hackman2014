@@ -1,0 +1,8 @@
+
+<h4>Pick a game to Join</h4>
+<div class="startGame" ng-repeat="game in games">
+	<button class="game.status" ng-click="startTheGame(game.name)">
+		{{game.name}} - 
+		{{game.status}}
+	</button>
+</div>

@@ -1,6 +1,8 @@
 angular.module('FSUGame.controllers', [])
 
     .controller('ctrlApp', ['$scope', function ($scope) {
+
+		$scope.Game = "Test";
 		console.log('main controller');
         
         $scope.gameState = 2;
@@ -59,6 +61,8 @@ angular.module('FSUGame.controllers', [])
             }
         
         }
+
+        $scope.gameState = 0;
         
     }])
     .controller('ctrlHome', ['$scope', function ($scope) {
