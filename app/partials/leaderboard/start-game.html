@@ -1,16 +1,17 @@
-<section id="welcomeScreen" layout="horizontal">
-   
-   <div flex="60" layout="horizontal" class="startingBlock" layout-align="center">
-       
+<section id="welcomeScreen" layout="horizontal" layout-padding>
+  
+  <div flex="50" offset="30" layout="vertical" class="startingBlock" layout-align="center center">
+      
        <h1>Welcome to ????????</h1>
        
-       <p>Click the button below to start up a game and then connect to it via your mobile and start when your ready</p>
+       <p flex="80">Click the button below to start up a game and then connect to it via your mobile and start when your ready</p>
        
        
-       
-       
-   </div>
-   
-    
+       <md-button ariaLabel="Start Game" ng-click="startGame()" class="startGameBtn md-theme-green">Start Game</md-button>
+      
+      
+  </div>
+
 </section>
+
 

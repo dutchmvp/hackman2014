@@ -1,7 +1,64 @@
 /*# sourceMappingURL=app.css.map */
 
-#test {
-   color:#fff; 
+body {
+    font-size: 14px;
+    background-color:#fafafa;
+}
+
+#leaderBoardHeader {
+    background: #00897b;
+    height: 80px;
+    
+    #logo {
+        
+        color:#fff;
+        font-size: 24px;
+        line-height: 26px;
+        margin-left:20px;
+        
+        
+        
+    }
+}
+
+// css for the create game view
+.startingBlock {
+    
+    background:#212121;
+    margin-top: 80px;
+    
+    h1 {
+        margin-bottom: 0;
+        color:#161616;
+        font-size: 26px;
+        text-align: center;
+        color:#fff;
+    }
+    
+    p {
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        color:#fff;
+    }
+    
+    .startGameBtn {
+        
+        margin-bottom:15px;
+        width:40%;
+        background-color:green!important;
+    }
+    
 }
 
 
+// css for the leaderBoard view
+
+#leaderBoardView {
+    
+    
+    
+    
+    
+    
+}
