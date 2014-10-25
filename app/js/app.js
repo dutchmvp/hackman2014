@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGame.services'])
+angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGame.services','ngMaterial'])
 
     .constant('FIREBASE_URI', 'https://hackman2014.firebaseio.com/')
 

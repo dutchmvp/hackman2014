@@ -1,6 +1,7 @@
 angular.module('FSUGame.controllers')
 
-    .controller('ctrlLeaderboard', ['$scope', function ($scope) {
+
+    .controller('ctrlLeaderboard', ['$scope','$interval', function ($scope,$interval) {
 		/*
          * States:
          *  - 0: Click to start game
@@ -15,5 +16,46 @@ angular.module('FSUGame.controllers')
         $scope.startGame = function() {
                
         };
+        
+        // counter down timer //
+        $scope.counter = 180;
+        $scope.nearEnd = false;
+        
+        $scope.winner = {}
+        $scope.gameRunning = false;
+      
+        $scope.getRandomSpan = function(){
+          return Math.floor(Math.random() * 50) + 1
+        }
+                var start = $interval(function() {
+
+            if($scope.counter !== 0) {
+                $scope.counter--;
+                $scope.gameRunning = true;
+                
+                 $scope.players[0] = 
+                    {
+                        name:'jason staerck',
+                        avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
+                        score: $scope.getRandomSpan()
+                    }
+                     
+                
+                
+                if($scope.counter < 30) {
+                   
+                    $scope.nearEnd = true;
+                    
+                } 
+            } else {
+                $scope.gameRunning = false;
+                $scope.winner.name = 'peter';
+                $interval.cancel(start);
+                
+            }
+        
+        },180);
+        
+        // ******************* //
     }]);
 

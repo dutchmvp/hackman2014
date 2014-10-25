@@ -70,8 +70,29 @@ angular.module('FSUGame.controllers', [])
         // ************************ //
 
       
+
         
        
+
+        $scope.counter = 180;
+        $scope.nearEnd = false;
+      
+        var start = $interval(function() {
+            
+              
+            if($scope.counter !== 0) {
+                $scope.counter--
+                
+                if($scope.counter < 30) {
+                    
+                    $scope.nearEnd = true;
+                    
+                }
+            }
+            
+        },180);
+      
+
         
     }])
 
@@ -87,4 +108,8 @@ angular.module('FSUGame.controllers', [])
             var hours = Math.floor(minutes / 60);
             return (z(minutes)+':'+z(seconds));
         };
+
     })
+
+    });
+
