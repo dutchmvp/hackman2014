@@ -1,1 +1,10 @@
-<h1>This is game Two</h1>
+<div class="whichLargest">
+		<div class="instructions">
+		<p>Which is the largest</p><h4>Points left <strong>{{points}}</strong></h4>
+		<ul>
+			<li ng-repeat="img in level.images" ng-click="checkAnswer($index)">
+				<img ng-src="img/{{img}}.jpg" />
+			</li>
+		</ul>
+	<ul>
+</div>

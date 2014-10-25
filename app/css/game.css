@@ -1,0 +1,53 @@
+.animate {
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
+}
+
+.instructions p {
+  display: inline-block;
+  width: 60%;
+  vertical-align: middle;
+}
+.instructions h4 {
+  display: inline-block;
+  width: 40%;
+  vertical-align: middle;
+  text-align: right;
+}
+.instructions h4 strong {
+  color: blue;
+}
+
+.whichLargest li {
+  list-style: none;
+  display: inline-block;
+  width: 44%;
+  margin: 10px 1.5%;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  line-height: 60px;
+  transition: display 2s linear;
+}
+.whichLargest li img {
+  width: 150px;
+  height: 150px;
+}
+
+.mathMania li {
+  list-style: none;
+  display: block;
+  width: 95%;
+  margin: 10px 2.5%;
+  height: 60px;
+  background: #999;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  line-height: 60px;
+  transition: display 2s linear;
+}

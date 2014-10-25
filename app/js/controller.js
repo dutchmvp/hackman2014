@@ -4,7 +4,7 @@ angular.module('FSUGame.controllers', [])
 
 		$scope.Game = "Test";
 		console.log('main controller');
-        $scope.gameState = 0;
+        $scope.gameState = 1;
         
     }])
     .controller('ctrlHome', ['$scope', function ($scope) {

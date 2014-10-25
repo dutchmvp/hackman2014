@@ -1,1 +1,10 @@
-<h1>This is game One</h1>
+<div class="mathMania">
+	<h1>Math Mania</h1>
+	<div class="instructions">
+		<p>Remove the numbers until {{level.amount}} is left</p><h4>Points left <strong>{{points}}</strong></h4>
+	<ul>
+		<li class="animate" ng-repeat="selectNumber in level.numbers" ng-click="removeElement($event, selectNumber)">
+			{{selectNumber}}
+		</li>
+	</ul>
+</div>
