@@ -7,7 +7,7 @@ body {
 
 #leaderBoardHeader {
     background: #00897b;
-    height: 80px;
+    height: 50px;
     
     #logo {
         
@@ -56,7 +56,129 @@ body {
 
 #leaderBoardView {
     
+    .row {
+        width:100%;
+       
+        
+        
+        #timerArea {
+         
+            height:100px;
+            
+            span {
+                color:#000;
+                font-size: 36px;
+                line-height: 38px;
+            }
+        }
+        
+        #specialsArea {
+            background: #e1f5fe;
+             
+        }
+    }
     
+    
+    #playersArea {
+        background:#dcedc8;
+        height: 460px;
+        width:100%;
+        padding:0px 2% 0 2%;
+        position: relative;
+        
+        .player1 {
+           top:10px;
+           left:10px;           
+        }
+        
+        .player2 {
+            top:100px;
+            left:10px; 
+            
+        }
+        
+        .player3 {
+           top:190px;
+            left:10px;  
+            
+        }
+        
+        .player4 {
+           top:280px;
+           left:10px; 
+            
+        }
+        
+        .player5 {
+          top:370px;
+            left:10px; 
+            
+        }
+        
+        .player6 {
+          top:10px;
+          left:51%; 
+            
+        }
+        
+        .player7 {
+          top:100px;
+          left:51%;
+            
+        }
+        
+        .player8 {
+          top:190px;
+        left:51%;
+            
+        }
+        
+        .player9 {
+          top:280px;
+            left:51%;
+            
+        }
+        
+        .player10 {
+          top:370px;
+         left:51%;
+            
+        }
+        
+        
+        .player {
+            background:#fff;
+            position: absolute;
+            width:48%;
+            -webkit-transition: all linear 1s; /* For Safari 3.1 to 6.0 */
+            transition: all 1s ease;
+            
+            
+            .avatar {
+                border-radius: 30px;
+                border: 1px solid #ddd;
+                width: 48px;
+                margin: 16px;
+            }
+            
+            .name {
+                padding-top:10px;
+                
+            }
+            
+            .score {
+                
+                text-align: right;
+                .trophy {
+                    width:40px;
+                    height:auto;
+                    margin-right: 15px;
+                }
+            }
+            
+            
+        }
+    }
     
     
     

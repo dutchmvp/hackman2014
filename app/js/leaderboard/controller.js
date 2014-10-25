@@ -8,6 +8,12 @@ angular.module('FSUGame.controllers')
          *  - 2: Playing
          *  - 3: Game end
          */
+
+        $scope.state = 0;
         
+        // when user clicks start game - create game in firebase
+        $scope.startGame = function() {
+               
+        };
     }]);
 

@@ -1,7 +1,55 @@
-<section id="" layout="horizontal">
+<section id="leaderBoardView" layout-padding>
+   
+   <div class="row" layout="horizontal" flex style="padding-bottom:10px;">    
+        <div id="specialsArea" flex>
+
+asdasd
+        </div>
+
+        <div id="timerArea" flex="40" layout="vertical" layout-align="center center" ng-class="">
+            <span >{{counter|formatTimer}}</span>
+
+        </div>
+        
+    </div>
     
+    <div class="row" layout="horizontal" flex>
     
+        <div id="playersArea" layout="vertical">
+
+            
+                <md-list flex>
+
+                    <md-item-content ng-repeat="player in players" class="player player{{$index+1}}">
+
+                        <div class="md-tile-left">
+
+                            <img ng-src="{{player.avatar}}" alt="{{player.name}}" class="avatar" />
+
+                        </div>
+
+                        <div class="md-tile-content" layout="horizontal">
+                           <div flex layout-align="center center">
+                                <h3 class="name">{{player.name}}</h3>
+                            </div>
+
+                            <div class="score" flex="40">
+                                <img class="trophy" ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" /> {{player.score}}                       
+                            </div>
+
+                        </div>
+
+                    </md-item-content>
+
+
+
+                </md-list>
+
+
+
+        </div>
     
+    </div>
     
     
 </section>
