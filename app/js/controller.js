@@ -1,7 +1,7 @@
 angular.module('FSUGame.controllers', [])
 
     .controller('ctrlApp', ['$scope', function ($scope) {
-		console.log('main controller');
+		$scope.Game = "Test";
     }])
     .controller('ctrlHome', ['$scope', function ($scope) {
 		console.log('added');
