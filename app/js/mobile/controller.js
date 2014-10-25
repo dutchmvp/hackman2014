@@ -31,15 +31,13 @@ angular.module('FSUGame.controllers')
 		$rootScope.$watch('user.name', usernameCheck());
         
         $scope.continueButton = function() {
-            if (usernameCheck($rootScope.user.name)) {
+            if (usernameCheck($scope.user.name)) {
                 $scope.state = 1;
             }
         };
         
         // Lobby pick a game
-        GameService.all().then(function(response) {
-            $scope.games = response;
-        });
+        $scope.games = GameService.all();
         
         $scope.joinGame = function(gameId) {  
             // create client
@@ -62,27 +60,30 @@ angular.module('FSUGame.controllers')
             $scope.connectionId = response.name();
 
             // get game details
-            GameService.get($routeParams.gameId).then(function(response) {
-                $scope.game = response;
-                
-                $scope.$watch('game.gameStatus', function(value) {
-                    switch(value) {
-                        case 'Lobby':
-                            
-                        break;
-                        case 'Playing':
-                            // go to first game
-                            var goToGame = Math.floor((Math.random() * 10) + 1);
-                            $location.path('/game/' + goToGame);
-                        break;
-                        case 'Winner':
-                            alert('Annouce the winner'); 
-                        break;
-                        default:
-                            // just wait
-                        break;
-                    };
-                });
+            $scope.game = GameService.get($routeParams.gameId);
+            
+            $scope.$watch('game.gameStatus', function(value) {
+                switch(value) {
+                    case 'Waiting':
+                        var refreshInterval = setInterval(function() {
+                            $scope.$apply(function(){
+                                $scope.game.timeLeft--;
+                            });
+
+                            if ($scope.game.timeLeft < 1) {
+                                $scope.game.gameStatus = 'Playing';
+                            }
+                        }, 1000);
+                    break;
+                    case 'Playing':
+                        var goToGame = Math.floor((Math.random() * 10) + 1);
+                        clearInterval(refreshInterval);
+                        $location.path('/game/' + goToGame);
+                    break;
+                    default:
+                        // just wait
+                    break;
+                };
             });
         });
     }]);
