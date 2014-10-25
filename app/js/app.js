@@ -9,6 +9,8 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
             controller: 'ctrlHome',
             templateUrl: 'partials/home.html'
         })
+        
+        // application
 		.when('/mobile', {
             controller: 'ctrlJoinGame',
             templateUrl: 'partials/mobile/joinGame.html'
@@ -18,9 +20,15 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
             templateUrl: 'partials/mobile/game.html'
         })
         .when('/leaderboard', {
-            controller: 'ctrlLeaderboard',
-            templateUrl: 'partials/leaderboard/main.html'
+            controller: 'ctrlCreateGame',
+            templateUrl: 'partials/leaderboard/start-game.html'
         })
+        .when('/leaderboard/:gameId', {
+            controller: 'ctrlLeaderboard',
+            templateUrl: 'partials/leaderboard/playing.html'
+        })
+        
+        // games
         .when('/game/1', {
             controller: 'ctrlGame1',
             templateUrl: 'partials/games/1.html'
@@ -61,5 +69,7 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
             controller: 'ctrlGame10',
             templateUrl: 'partials/games/10.html'
         })
+        
+        // fallback
         .otherwise({redirectTo: '/'});
     });

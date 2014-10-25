@@ -20,15 +20,14 @@
         </div>
 
         <div id="timerArea" flex="40" layout="vertical" layout-align="center center" ng-class="">
-            <span >{{counter|formatTimer}}</span>
-
+            <span >{{game.timeLeft|formatTimer}}</span>
         </div>
         
     </div>
     
     <div class="row" layout="horizontal" flex>
     
-        <div id="playersArea" layout="vertical" ng-if="gameRunning == true">
+        <div id="playersArea" layout="vertical" ng-if="!winner.name">
 
             
                 <md-list flex>
@@ -57,12 +56,9 @@
 
 
                 </md-list>
-
-    
-
         </div>
         
-        <div id="winnersArea" layout="vertical" ng-if="gameRunning == false" flex>
+        <div id="winnersArea" layout="vertical" ng-if="winner.name" flex>
            
            <div offset="30" flex="60" class="winningMessage" layout-padding>
            
