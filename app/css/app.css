@@ -32,6 +32,12 @@ body {
   text-align: center;
   color: #fff;
 }
+.startingBlock input {
+  background: #fff;
+  margin: 0 0 20px 0;
+  border-radius: 2px;
+  padding-left: 10px;
+}
 .startingBlock .startGameBtn {
   margin-bottom: 15px;
   width: 40%;
@@ -49,8 +55,8 @@ body {
   font-size: 36px;
   line-height: 38px;
 }
-#leaderBoardView .row #specialsArea {
-  background: #e1f5fe;
+#leaderBoardView .row #specialsArea .gameControls md-button {
+  height: 40px;
 }
 #leaderBoardView #playersArea {
   background: #dcedc8;
@@ -103,9 +109,9 @@ body {
   background: #fff;
   position: absolute;
   width: 48%;
-  -webkit-transition: all linear 1s;
+  -webkit-transition: all linear 0.5s;
   /* For Safari 3.1 to 6.0 */
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 #leaderBoardView #playersArea .player .avatar {
   border-radius: 30px;
@@ -123,4 +129,11 @@ body {
   width: 40px;
   height: auto;
   margin-right: 15px;
+}
+#leaderBoardView #playersArea .wining {
+  background: #fff176;
+}
+#leaderBoardView .winningMessage {
+  background: #fff176;
+  text-align: center;
 }

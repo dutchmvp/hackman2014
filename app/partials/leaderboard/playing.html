@@ -1,13 +1,21 @@
 <section id="leaderBoardView" layout-padding>
    
-   <div class="row" layout="horizontal" flex style="padding-bottom:10px;">    
-        <div id="specialsArea" flex>
-
-asdasd
-        </div>
-
+   <div class="row" layout="horizontal" flex style="padding-bottom:10px;">           
+        <div class="gameControls" layout="horizontal" flex="20" layout-align="center center">
+        
+                <md-button class="md-theme-green" ng-click="startGame()" flex="50" >Start the game</md-button>
+                
+                
+            </div> 
+            
+            <div class="gameInfo" layout="vertical" layout-align="center center" flex="40">
+                   
+                 <p>Players in game {{players.length}}</p>  
+                   
+            </div>  
+             
         <div id="timerArea" flex="40" layout="vertical" layout-align="center center" ng-class="">
-            <span >{{counter|formatTimer}}</span>
+            <span >{{game.timeLeft|formatTimer}}</span>
 
         </div>
         
@@ -15,12 +23,12 @@ asdasd
     
     <div class="row" layout="horizontal" flex>
     
-        <div id="playersArea" layout="vertical">
+        <div id="playersArea" layout="vertical" ng-if="!winner.name">
 
             
                 <md-list flex>
 
-                    <md-item-content ng-repeat="player in players" class="player player{{$index+1}}">
+                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player player{{$index+1}}" ng-class="{ wining: $index + 1 == 1}">
 
                         <div class="md-tile-left">
 
@@ -44,10 +52,24 @@ asdasd
 
 
                 </md-list>
-
-
-
         </div>
+        
+        <div id="winnersArea" layout="vertical" ng-if="winner.name" flex>
+           
+           <div offset="30" flex="60" class="winningMessage" layout-padding>
+           
+           <img ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" class="winningTrphy" />
+            
+                <h2>Well done {{winner.name}} you just beat every one</h2>
+                
+                <p>Dave the duck says well done but pipe down and try to win again i dare ya</p>
+                
+            </div>
+            
+            
+        </div>
+        
+       
     
     </div>
     

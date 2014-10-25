@@ -42,6 +42,13 @@ body {
         color:#fff;
     }
     
+    input {
+        background: #fff;
+        margin: 0 0 20px 0;
+        border-radius: 2px;
+        padding-left: 10px;
+    }
+    
     .startGameBtn {
         
         margin-bottom:15px;
@@ -73,7 +80,13 @@ body {
         }
         
         #specialsArea {
-            background: #e1f5fe;
+        
+                .gameControls {
+                    
+                    md-button {
+                        height:40px;
+                    }
+                }
              
         }
     }
@@ -146,12 +159,14 @@ body {
         }
         
         
+        
+        
         .player {
             background:#fff;
             position: absolute;
             width:48%;
-            -webkit-transition: all linear 1s; /* For Safari 3.1 to 6.0 */
-            transition: all 1s ease;
+            -webkit-transition: all linear 0.5s; /* For Safari 3.1 to 6.0 */
+            transition: all 0.5s ease;
             
             
             .avatar {
@@ -178,9 +193,20 @@ body {
             
             
         }
+        
+        .wining {
+            
+                background:#fff176;
+             
+        }
     }
     
     
-    
+     .winningMessage {
+         
+         background: #fff176;
+         text-align: center;
+         
+     }   
     
 }
