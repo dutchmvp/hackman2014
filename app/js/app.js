@@ -3,8 +3,7 @@
 angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers'])
 
 .config(function ($routeProvider) {
-        $routeProvider
-        .when('/', {
+        $routeProvider.when('/', {
             controller: 'ctrlHome',
             templateUrl: 'partials/home.html'
         })
@@ -18,3 +17,4 @@ angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers'])
         })
         .otherwise({redirectTo: '/'});
     });
+
