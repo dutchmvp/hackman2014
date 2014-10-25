@@ -9,7 +9,7 @@ angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers'])
         })
 		.when('/mobile', {
             controller: 'ctrlMobile',
-            templateUrl: 'partials/mobile/mobile.html'
+            templateUrl: 'partials/mobile/game.html'
         })
         .when('/leaderboard', {
             controller: 'ctrlLeaderboard',
@@ -17,4 +17,3 @@ angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers'])
         })
         .otherwise({redirectTo: '/'});
     });
-

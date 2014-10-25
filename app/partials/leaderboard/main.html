@@ -1,4 +1,4 @@
-<section ng-if="state == 0">Start Game</section>
-<section ng-if="state == 1">Waiting for players</section>
-<section ng-if="state == 2">Playing</section>
-<section ng-if="state == 3">Winner is...</section>
+<section ng-if="state == 0" ng-include src="'/partials/leaderboard/start-game.html'"></section>
+<section ng-if="state == 1" ng-include src="'/partials/leaderboard/waiting.html'"></section>
+<section ng-if="state == 2" ng-include src="'/partials/leaderboard/playing.html'"></section>
+<section ng-if="state == 3" ng-include src="'/partials/leaderboard/winner.html'"></section>
