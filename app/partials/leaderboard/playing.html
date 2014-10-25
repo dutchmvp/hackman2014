@@ -1,7 +1,54 @@
-<section id="" layout="horizontal">
+<section id="leaderBoardView" layout-padding>
+   
+   <div class="row" layout="horizontal" flex style="padding-bottom:20px;">    
+        <div id="specialsArea" flex>
+
+asdasd
+        </div>
+
+        <div id="timerArea" flex="40">
+
+asdasdasd
+
+        </div>
+        
+    </div>
     
+    <div class="row" layout="horizontal" flex>
     
+        <div id="playersArea" layout="vertical">
+
+            
+                <md-list flex>
+
+                    <md-item-content ng-repeat="player in players" class="player player{{$index+1}}">
+
+                        <div class="md-tile-left">
+
+                            <img ng-src="{{player.avatar}}" alt="{{player.name}}" class="avatar" />
+
+                        </div>
+
+                        <div class="md-tile-content">
+                            <h3 flex="60">{{player.name}}</h3>
+
+                            <span class="score" flex="40">
+                                {{player.score}}                       
+                            </span>
+
+                        </div>
+
+                    </md-item-content>
+
+
+
+                </md-list>
+
+
+
+        </div>
     
+    </div>
     
     
 </section>

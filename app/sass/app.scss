@@ -56,7 +56,109 @@ body {
 
 #leaderBoardView {
     
+    .row {
+        width:100%;
+       
+        
+        
+        #timerArea {
+            
+            background:green;
+            height:100px;
+        }
+        
+        #specialsArea {
+            background: blue;
+             height:100px;
+        }
+    }
     
+    
+    #playersArea {
+        background:yellow;
+        height: 460px;
+        width:100%;
+        padding:0px 2% 0 2%;
+        position: relative;
+        
+        .player1 {
+           top:10px;
+           left:10px;           
+        }
+        
+        .player2 {
+            top:100px;
+            left:10px; 
+            
+        }
+        
+        .player3 {
+           top:190px;
+            left:10px;  
+            
+        }
+        
+        .player4 {
+           top:280px;
+           left:10px; 
+            
+        }
+        
+        .player5 {
+          top:370px;
+            left:10px; 
+            
+        }
+        
+        .player6 {
+          top:10px;
+            right:10px;  
+            
+        }
+        
+        .player7 {
+          top:100px;
+             right:10px;    
+            
+        }
+        
+        .player8 {
+          top:190px;
+            right:10px;    
+            
+        }
+        
+        .player9 {
+          top:280px;
+             right:10px;    
+            
+        }
+        
+        .player10 {
+          top:370px;
+          right:10px;    
+            
+        }
+        
+        
+        .player {
+            background:#fff;
+            position: absolute;
+            width:48%;
+            -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+            transition: width 2s;
+            
+            
+            .avatar {
+                border-radius: 30px;
+                border: 1px solid #ddd;
+                width: 48px;
+                margin: 16px;
+            }
+            
+            
+        }
+    }
     
     
     

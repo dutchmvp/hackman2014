@@ -18,14 +18,14 @@
 </head>
 <body ng-cloak>
     <main ng-controller="ctrlApp">
-    	<header ng-hide="gameState == 0">
+    	<header ng-hide="gameState == 0 || gamedevice == 'desktop'">
     		<h1>This is the header</h1>
     	</header>
         
 		<div ng-view>
             
 		</div>
-		<footer ng-hide="gameState == 0">
+		<footer ng-hide="gameState == 0 || gamedevice == 'desktop'">
 			<h2>This is the Footer</h2>
 		</footer>
     </main>
