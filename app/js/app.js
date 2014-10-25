@@ -3,6 +3,7 @@
 angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGame.services'])
 
     .constant('FIREBASE_URI', 'https://hackman2014.firebaseio.com/')
+    .constant('amountOfGames', 11)
 
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
@@ -60,6 +61,10 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
         .when('/game/10', {
             controller: 'ctrlGame10',
             templateUrl: 'partials/games/10.html'
+        })
+        .when('/game/11', {
+            controller: 'ctrlGame11',
+            templateUrl: 'partials/games/11.html'
         })
         .otherwise({redirectTo: '/'});
     });

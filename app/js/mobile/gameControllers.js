@@ -1,6 +1,6 @@
 angular.module('FSUGame.controllers')
 
-    .controller('ctrlGame1', ['$scope', '$location', function ($scope, $location) {
+    .controller('ctrlGame1', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
     
     	var difficulty = 500;
     	
@@ -76,13 +76,13 @@ angular.module('FSUGame.controllers')
 		
 		
 		$scope.moveOn = function (points) {
-			var goToGame = Math.floor((Math.random() * 11) + 1);
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
 		
     }])
-    .controller('ctrlGame2', ['$scope', '$location', function ($scope, $location) {
+    .controller('ctrlGame2', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
 		var difficulty = 500;
     	
     	$scope.points = 10;
@@ -127,17 +127,145 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
     		//Add points to element
-			var goToGame = Math.floor((Math.random() * 11) + 1);
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
     	
     }])
-    .controller('ctrlGame3', ['$scope', function ($scope) {
-		console.log('Game Three');
+    .controller('ctrlGame3', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+		var difficulty = 500;
+    	
+    	$scope.points = 10;
+    	
+    	var pointsTimer = setInterval(function() {
+    		$scope.$apply(function(){
+				$scope.points--;
+			});
+    	}, difficulty)
+    	
+    	$scope.Levels = [];
+    	
+    	$scope.Levels.push( { "level" : 1,
+					  "correct" : 0,
+					  "img": "apples.png",
+					  "buttons" : ['Apples','Pears','Oranges','Bananas']});
+		$scope.Levels.push( { "level" : 2,
+					  "correct" : 2,
+					  "img": "egg.jpg",
+					  "buttons" : ['Chickens','Cows','Eggs','Sheep']});
+		$scope.Levels.push( { "level" : 3,
+					  "correct" : 1,
+					  "img": "chicken.jpg",
+					  "buttons" : ['Eggs','Chickens','Cows','Sheep']});
+		$scope.Levels.push( { "level" : 4,
+					  "correct" : 3,
+					  "img": "oranges.png",
+					  "buttons" : ['Pears','Apples','Bananas','Oranges']});
+		$scope.Levels.push( { "level" : 5,
+					  "correct" : 0,
+					  "img": "pears.png",
+					  "buttons" : ['Pears','Apples','Oranges','Bananas']});
+		$scope.Levels.push( { "level" : 6,
+					  "correct" : 1,
+					  "img": "sheep.jpg",
+					  "buttons" : ['Cows','Sheep','Eggs','Chickens']});
+					  
+		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
+		$scope.level = $scope.Levels[levelNumber];
+		
+		$scope.checkAnswer = function (theindex) {
+			console.log(theindex);
+			if (theindex == $scope.level.correct) {
+				$scope.moveOn($scope.points);
+			} else {
+				alert ('incorrect');
+				$scope.moveOn(0);
+			}
+		}
+		
+		$scope.$watch('points', function() {
+			if ($scope.points < 0) {
+				$scope.checkAnswer('youLose', 10000);
+			}
+		});
+    	
+    	$scope.moveOn = function (points) {
+    		//Add points to element
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			clearInterval(pointsTimer);
+			$location.path("/game/" + goToGame);
+		}
     }])
-    .controller('ctrlGame4', ['$scope', function ($scope) {
-		console.log('Game Four');
+    .controller('ctrlGame4', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+		var difficulty = 800;
+    	
+    	$scope.points = 10;
+    	
+    	var pointsTimer = setInterval(function() {
+    		$scope.$apply(function(){
+				$scope.points--;
+			});
+    	}, difficulty)
+    	
+    	$scope.Levels = [];
+    	
+    	$scope.Levels.push( { "level" : 1,
+					  "correct" : 0,
+					  "img": "beyonce.jpg",
+					  "buttons" : ['Beyonce','Kesha','Kelly Rowland','Jen Hudson']});
+		$scope.Levels.push( { "level" : 2,
+					  "correct" : 1,
+					  "img": "gwynth.jpg",
+					  "buttons" : ['Cheryl Cole','Gwyneth Paltrow','Lady Gaga','Scarlett Johansson']});
+		$scope.Levels.push( { "level" : 3,
+					  "correct" :0,
+					  "img": "hayden.jpg",
+					  "buttons" : ['Hayden Panettiere','Gwyneth Paltrow','Jennifer Aniston','Lady Gaga']});
+		$scope.Levels.push( { "level" : 4,
+					  "correct" : 3,
+					  "img": "jennifer.jpg",
+					  "buttons" : ['Hayden Panettiere','Gwyneth Paltrow','Jennifer Lawrence','Kesha']});
+		$scope.Levels.push( { "level" : 5,
+					  "correct" : 0,
+					  "img": "katyperry.jpg",
+					  "buttons" : ['Katy Perry','Zooey Deschanel','Emily Blunt','Lady Gaga']});
+		$scope.Levels.push( { "level" : 6,
+					  "correct" : 1,
+					  "img": "mila.jpg",
+					  "buttons" : ['Cheryl Cole','Mila Kunis','Scarlett Johansson','Beyonce']});
+		$scope.Levels.push( { "level" : 6,
+					  "correct" : 2,
+					  "img": "scarlett.jpg",
+					  "buttons" : ['Cheryl Cole','Mila Kunis','Scarlett Johansson','Beyonce']});
+					  
+		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
+		$scope.level = $scope.Levels[levelNumber];
+		
+		$scope.checkAnswer = function (theindex) {
+			console.log(theindex);
+			if (theindex == $scope.level.correct) {
+				$scope.moveOn($scope.points);
+			} else {
+				alert ('incorrect');
+				$scope.moveOn(0);
+			}
+		}
+		
+		$scope.$watch('points', function() {
+			if ($scope.points < 0) {
+				$scope.checkAnswer('youLose', 10000);
+			}
+		});
+    	
+    	$scope.moveOn = function (points) {
+    		//Add points to element
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			clearInterval(pointsTimer);
+			$location.path("/game/" + goToGame);
+		}
+		
+		
     }])
     .controller('ctrlGame5', ['$scope', function ($scope) {
 		console.log('Game Five');
