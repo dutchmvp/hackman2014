@@ -11,7 +11,11 @@ angular.module('FSUGame.controllers', [])
             {
                 name:'jason staerck',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
+
                 score: 0
+
+                score: 9999
+
             },
             {
                 name:'Matt philips',
@@ -61,8 +65,30 @@ angular.module('FSUGame.controllers', [])
         
         ]
         
-    
+
+
+        
        
+
+        $scope.counter = 180;
+        $scope.nearEnd = false;
+      
+        var start = $interval(function() {
+            
+              
+            if($scope.counter !== 0) {
+                $scope.counter--
+                
+                if($scope.counter < 30) {
+                    
+                    $scope.nearEnd = true;
+                    
+                }
+            }
+            
+        },180);
+      
+
         
     }])
 
@@ -79,7 +105,11 @@ angular.module('FSUGame.controllers', [])
             return (z(minutes)+':'+z(seconds));
         };
 
+
     
+
+    })
+
 
     });
 
