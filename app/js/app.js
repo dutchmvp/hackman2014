@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers'])
+angular.module('FSUGame', ['ngRoute', 'FSUGame.controllers', 'ngMaterial'])
 
 .config(function ($routeProvider) {
         $routeProvider.when('/', {
