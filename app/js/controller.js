@@ -1,6 +1,6 @@
 angular.module('FSUGame.controllers', [])
 
-    .controller('ctrlApp', ['$scope', function ($scope) {
+    .controller('ctrlApp', ['$scope','$interval', function ($scope,$interval) {
 		$scope.Game = "Test";
 		console.log('main controller');
         
@@ -9,42 +9,42 @@ angular.module('FSUGame.controllers', [])
         
         $scope.players = {
             1 : {
-                name:'jason',
+                name:'jason staerck',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             },
             2 : {
-                name:'Matt',
+                name:'Matt philips',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 2
             },
             3 : {
-                name:'jason',
+                name:'lee cooper',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             },
             4 : {
-                name:'jason',
+                name:'kristy brooks',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             },
             5 : {
-                name:'jason',
+                name:'ben ely',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             },
             6 : {
-                name:'jason',
+                name:'cock master',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
-                score: 10
+                score: 10000
             },
             7 : {
-                name:'jason',
+                name:'mickey mouse',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             },
             8 : {
-                name:'jason',
+                name:'Mike Chadwick',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             },
@@ -54,16 +54,47 @@ angular.module('FSUGame.controllers', [])
                 score: 10
             },
             10 : {
-                name:'jason',
+                name:'bonny supper star',
                 avatar: 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png',
                 score: 10
             }
         
         }
 
-        $scope.gameState = 0;
+      
+        $scope.counter = 180;
+        $scope.nearEnd = false;
+      
+        var start = $interval(function() {
+            
+              
+            if($scope.counter !== 0) {
+                $scope.counter--
+                
+                if($scope.counter < 30) {
+                    
+                    $scope.nearEnd = true;
+                    
+                }
+            }
+            
+        },180);
+        
+          
+       
+        
     }])
 
     .controller('ctrlHome', ['$scope', function ($scope) {
 		
-    }]);
+    }])
+    .filter('formatTimer', function() {
+      return function(input)
+        {
+            function z(n) {return (n<10? '0' : '') + n;}
+            var seconds = input % 60;
+            var minutes = Math.floor(input / 60);
+            var hours = Math.floor(minutes / 60);
+            return (z(minutes)+':'+z(seconds));
+        };
+    });

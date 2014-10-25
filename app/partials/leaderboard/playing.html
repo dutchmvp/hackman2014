@@ -1,14 +1,13 @@
 <section id="leaderBoardView" layout-padding>
    
-   <div class="row" layout="horizontal" flex style="padding-bottom:20px;">    
+   <div class="row" layout="horizontal" flex style="padding-bottom:10px;">    
         <div id="specialsArea" flex>
 
 asdasd
         </div>
 
-        <div id="timerArea" flex="40">
-
-asdasdasd
+        <div id="timerArea" flex="40" layout="vertical" layout-align="center center" ng-class="">
+            <span >{{counter|formatTimer}}</span>
 
         </div>
         
@@ -29,12 +28,14 @@ asdasdasd
 
                         </div>
 
-                        <div class="md-tile-content">
-                            <h3 flex="60">{{player.name}}</h3>
+                        <div class="md-tile-content" layout="horizontal">
+                           <div flex layout-align="center center">
+                                <h3 class="name">{{player.name}}</h3>
+                            </div>
 
-                            <span class="score" flex="40">
-                                {{player.score}}                       
-                            </span>
+                            <div class="score" flex="40">
+                                <img class="trophy" ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" /> {{player.score}}                       
+                            </div>
 
                         </div>
 
