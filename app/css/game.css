@@ -149,3 +149,7 @@ ul {
   display: block;
   text-align: center;
 }
+
+.md-button-inner {
+  height: 60px !important;
+}

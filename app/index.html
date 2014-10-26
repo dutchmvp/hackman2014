@@ -7,7 +7,7 @@
     <title>FSU Game</title>
     
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
@@ -18,19 +18,17 @@
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-cloak>
-    <main ng-controller="ctrlApp">
+    <main ng-controller="ctrlApp" class="container">
     	<header id="mainHeader" >
-    		<h1 ng-if="user.name">
-                <img ng-if="user.key" ng-src="http://robohash.org/{{user.key}}.png?set=set1&size=46x46" />
-                {{user.name}}
-            </h1>
+    		<img class="avatar" /><p class="playerName">
+			<p class="playerScore"></p>
     	</header>
         
 		<div ng-view>
             
 		</div>
 
-		<footer n id="mainFooter">
+		<footer id="mainFooter">
 
 			<h2>This is the Footer</h2>
 		</footer>
