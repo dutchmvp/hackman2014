@@ -418,7 +418,7 @@ angular.module('FSUGame.controllers')
 					  "img": "kellybrook"})
 		$scope.Levels.push({ "level" : 6,
 					  "different" : 1,
-					  "img": "mcdonald"})
+					  "img": "mcdonald1"})
 					  
 		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
 		$scope.level = $scope.Levels[levelNumber];
