@@ -92,13 +92,13 @@ angular.module('FSUGame.services', [])
                 });
             },
             onScoreUpdate: function(id, callback) {
-                connectionRef.on('child_changed', function (snapshot) {
+                connectionRef.on('child_changed', function (snapshot) {                    
                     var player = snapshot.val();
                     
                     if (player.gameId == id && typeof callback == 'function') {
-                        callback(snapshot.val());
+                        callback(player);
                     }
-                });    
+                });
             }
         };
         

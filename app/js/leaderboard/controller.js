@@ -49,7 +49,7 @@ angular.module('FSUGame.controllers')
         var refreshInterval;
         
         $scope.annouceWinner = function() {
-            $scope.winner.name = 'Ben';  
+            //$scope.winner.name = 'Ben';  
         };
         
         $scope.players = [];
@@ -70,13 +70,17 @@ angular.module('FSUGame.controllers')
             // on player join
             GameService.onJoin($rootScope.game.$id, function(player) {
                 // temp add avator
-                player.client.avatar = 'https://cdn2.iconfinder.com/data/icons/faceavatars/PNG/D04.png';
+                player.client.avatar = 'http://robohash.org/' + player.key + '.png?set=set1&size=46x46';
 
                 $scope.players.push(player.client);
             });
             
-            GameService.onScoreUpdate($rootScope.game.$id, function(player) {
-                 console.log(player);
+            GameService.onScoreUpdate($rootScope.game.$id, function(player) {                
+                for (var i = 0; i < $scope.players.length; i++) {                    
+                    if ($scope.players[i].key == player.client.key) {
+                        $scope.players[i].score = player.client.score;
+                    }
+                }
             });
             
             if ($rootScope.game.gameStatus == 'Winner') {
