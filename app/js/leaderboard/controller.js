@@ -147,6 +147,7 @@ angular.module('FSUGame.controllers')
                                 }
                                 else {
                                     // game end
+                                    $scope.nearEnd = false;
                                     $rootScope.game.gameStatus = 'Winner';
                                 }
                             }

@@ -3,6 +3,12 @@ angular.module('FSUGame.controllers')
     .controller('ctrlGame1', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
     
     	var difficulty = 500;
+        
+        // give chance of multiplier
+        var multiplierChance = Math.random();
+        if (multiplierChance < 0.2) {
+            
+        }
     	
     	$scope.points = 10;
     	
@@ -82,7 +88,6 @@ angular.module('FSUGame.controllers')
 			var notMyGame = false;
 			
 			while (notMyGame == false) {
-    			console.log('while loop ran');
 			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			    if (goToGame != 1) {
 				    notMyGame = true;
