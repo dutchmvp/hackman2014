@@ -9,7 +9,7 @@ angular.module('FSUGame.controllers', [])
             $rootScope.mobile = true;
           };
         
-    }})
+    }])
 
     .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
         function is_touch_device() {
