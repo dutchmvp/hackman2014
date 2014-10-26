@@ -381,10 +381,14 @@ angular.module('FSUGame.controllers')
 		$scope.pressArray = 0;
 		
 		$scope.pressSimon = function (selected) {
+		console.log('simon pressed');
 			if ($scope.readyToPlay == true) {
 				if (selected != $scope.level.pattern[$scope.pressArray]) {
 					$scope.moveOn(0);
-				} 
+					console.log('incorrect');
+				} else {
+					console.log('correct');
+				}
 				
 				$scope.pressArray ++;
 				
@@ -395,7 +399,7 @@ angular.module('FSUGame.controllers')
 		}
 		
 		$scope.moveOn = function (points) {
-		
+			console.log('moveon called');
 			if (typeof $rootScope.connection != "undefined") {
 				$rootScope.connection.client.score += points;
 			}
@@ -471,7 +475,7 @@ angular.module('FSUGame.controllers')
 
 		    	
 		    	
-		}, 1000);
+		}, 3000);
 		
 		$scope.checkAnswer = function (theindex) {
 			if (theindex == $scope.level.correct) {
