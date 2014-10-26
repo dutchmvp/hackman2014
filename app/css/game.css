@@ -3,6 +3,31 @@
   box-sizing: border-box;
 }
 
+#mainHeader .avatar {
+  width: 10%;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  height: 50px;
+  vertical-align: middle;
+}
+#mainHeader .playerName {
+  width: 60%;
+  display: inline-block;
+  color: white;
+  text-align: left;
+  font-size: 30px;
+  vertical-align: middle;
+  margin: 0px;
+}
+#mainHeader .playerScore {
+  width: 28%;
+  margin-right: 2%;
+  display: inline-block;
+  color: white;
+  text-align: right;
+}
+
 .winningMessage {
   text-align: center;
 }
