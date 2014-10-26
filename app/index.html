@@ -20,8 +20,7 @@
 <body ng-cloak>
     <main ng-controller="ctrlApp" class="container">
     	<header id="mainHeader" >
-    		<img class="avatar" /><p class="playerName">
-			<p class="playerScore"></p>
+            <img class="avatar" ng-if="user.key" ng-src="http://robohash.org/{{user.key}}.png?set=set1&size=46x46" /><p ng-if="user.name" class="playerName">{{user.name}}</p><p ng-if="user.score > 0" class="playerScore">{{user.score}}</p>
     	</header>
         
 		<div ng-view class="mainView">
@@ -29,7 +28,6 @@
 		</div>
 
 		<footer id="mainFooter">
-
 			<h2>This is the Footer</h2>
 		</footer>
     </main>

@@ -3,10 +3,10 @@ angular.module('FSUGame.controllers')
     .controller('ctrlJoinGame', ['$scope', '$rootScope', '$location', 'GameService', 'ClientService', function ($scope, $rootScope, $location, GameService, ClientService) {
         $scope.state = 0;
         $rootScope.connection = null;
+        $rootScope.user.score = 0;
         
-        if ($rootScope.user.name && $rootScope.user.name.length > 0) {
-            // user already has name so move on...
-            $scope.state = 1;
+        if ($rootScope.user.name && $rootScoop.user.name.length > 0) {
+            $scope.state = 2;
         }
 
         var usernameCheck = function(username) {            

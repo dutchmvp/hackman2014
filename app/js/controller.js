@@ -1,16 +1,11 @@
 angular.module('FSUGame.controllers', [])
 
-
     .controller('ctrlApp', ['$scope','$rootScope', function ($scope,$rootScope) {
-        
         $rootScope.mobile = false;
-        
-          if(Modernizr.touch){
+
+        if(Modernizr.touch){
             $rootScope.mobile = true;
-          };
-          
-		  
-        
+        };        
     }])
 
     .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
@@ -22,7 +17,6 @@ angular.module('FSUGame.controllers', [])
             $scope.gamedevice = 'desktop';
         }
         
-        // Create player details
         $rootScope.user = {
             $id: null,
             name: null,
