@@ -574,7 +574,17 @@ angular.module('FSUGame.controllers')
 		}
     }])
     .controller('ctrlGame8', ['$scope', function ($scope) {
-		$scope.getAmount = Math.floor((Math.random() * 20));
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 8) {
+				    notMyGame = true;
+			    }
+			}
+			
+			$location.path("/game/" + goToGame);
 		
     }])
 
