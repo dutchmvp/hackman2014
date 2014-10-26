@@ -208,10 +208,24 @@ ul {
 	}
 }
 
+.makeItRain {
+	position: relative;
+	
+	.money {
+		background-image: url('../img/dollar.jpg');
+		width: 200px;
+		height: 100px;
+	}
+}
+
 .center {
 	width: 100%;
 	display: block;
 	text-align: center;
+}
+
+#showMe {
+	display: none;
 }
 
 .md-button-inner {
