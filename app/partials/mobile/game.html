@@ -1,24 +1,23 @@
 <div class="joinGame">
     <div ng-if="game.gameStatus == 'Lobby'">
        <section id="waitingForGame" flex="50" offset="25" layout="horizontal" layout-align="center">
-
            <p>Waiting for game to start...</p>
            
+           <a ng-click="leaveGame()">Leave game</a>
        </section>
-        
     </div>
     
 	<div ng-if="game.gameStatus !== 'Lobby'">
        <section id="waitingForGame" flex="50" offset="25" layout="horizontal" layout-align="center">
-<div layout="vertical">
-        <h2 flex="100">
-        <div ng-if="game.timeLeft > 3">Get ready!</div>
-        <div ng-if="game.timeLeft <= 3">Get Set</div>
-        </h2>
-	
-        <span class="timer" flex="100">
-            {{game.timeLeft}}
-        </span>
+            <div layout="vertical">
+                <h2 flex="100">
+                <div ng-if="game.timeLeft > 3">Get ready!</div>
+                <div ng-if="game.timeLeft <= 3">Get Set</div>
+                </h2>
+
+                <span class="timer" flex="100">
+                    {{game.timeLeft}}
+                </span>
            </div>
         </section>
     </div>

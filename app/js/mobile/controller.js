@@ -5,8 +5,8 @@ angular.module('FSUGame.controllers')
         $rootScope.connection = null;
         $rootScope.user.score = 0;
         
-        if ($rootScope.user.name && $rootScoop.user.name.length > 0) {
-            $scope.state = 2;
+        if ($rootScope.user.name && $rootScope.user.name.length > 0) {
+            $scope.state = 1;
         }
 
         var usernameCheck = function(username) {            
@@ -54,6 +54,13 @@ angular.module('FSUGame.controllers')
             $location.path('/mobile/');
             return;
         }
+        
+        $scope.leaveGame = function() {
+            GameService.leaveConnection($rootScope.connection.$id).then(function(response) {
+                console.log(response);
+                $location.path('/mobile/');
+            });
+        };
         
         // join game
         GameService.join($routeParams.gameId, $rootScope.user).then(function(response) {

@@ -500,7 +500,10 @@ angular.module('ngAnimate', ['ng'])
 
         var toAdd = [], toRemove = [];
         forEach(map, function(status, className) {
-          var hasClass = angular.$$hasClass(element[0], className);
+          var hasClass = false;
+          if (angular.$$hasClass) {
+            hasClass = angular.$$hasClass(element[0], className);
+          }
           var matchingAnimation = lookup[className] || {};
 
           // When addClass and removeClass is called then $animate will check to
@@ -1008,7 +1011,7 @@ angular.module('ngAnimate', ['ng'])
 
           var cache = element.data(STORAGE_KEY);
           if (cache) {
-            cache.add = cache.add.concat(add);
+            if (cache.add) cache.add = cache.add.concat(add);
             cache.remove = cache.remove.concat(remove);
 
             //the digest cycle will combine all the animations into one function
