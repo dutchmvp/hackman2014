@@ -75,13 +75,31 @@ angular.module('FSUGame.controllers')
                 $scope.players.push(player.client);
             });
             
-            GameService.onScoreUpdate($rootScope.game.$id, function(player) {                
+            GameService.onScoreUpdate($rootScope.game.$id, function(player) {     
                 for (var i = 0; i < $scope.players.length; i++) {                    
                     if ($scope.players[i].key == player.client.key) {
                         $scope.players[i].score = player.client.score;
                     }
                 }
             });
+            
+            setInterval(function() {
+                var players = GameService.getAllConnections().then(function(players) {                    
+                    for (var j = 0; j < $scope.players.length; j++) {
+                        var playerMatched = false;
+                        
+                        for (var i = 0; i < players.length; i++) {
+                            if (players[i].gameId == $rootScope.game.$id && $scope.players[j].key == players[i].client.key) {
+                                playerMatched = true;
+                            }
+                        }
+                        
+                        if (!playerMatched) {
+                            $scope.players.splice(j, 1);
+                        }
+                    }
+                });
+            }, 2500);
             
             if ($rootScope.game.gameStatus == 'Winner') {
                 $scope.annouceWinner();

@@ -21,7 +21,7 @@
 <section id="gamesList" ng-if="state == 1" layout="vertical">
 <md-content>
 	<md-list>
-        <md-item-content  layout-align="center" ng-repeat="game in games" ng-click="joinGame(game.$id)" class="gameListItem" > 
+        <md-item-content  layout-align="center" ng-repeat="game in games" ng-click="joinGame(game.$id)" class="gameListItem" ng-if="game.gameStatus == 'Lobby'"> 
             <md-button>  {{game.name}} </md-button>
         </md-item-content>
     </md-list>

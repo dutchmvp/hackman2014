@@ -5,9 +5,10 @@
         </div> 
        
         <div class="gameInfo" layout="vertical" layout-align="center center" flex="33">       
-            <p ng-if="game.gameState.Lobby">Waiting for players to  join the game</p>
-            <p ng-if="game.gameState.Waiting">Get Ready to start</p>              
-            <p>Players in game {{players.length}}</p>         
+            <p ng-if="game.gameStatus == 'Lobby'" style="text-align: center;"><b>Waiting for players to join the game</b></p>
+            <p ng-if="game.gameStatus == 'Waiting'" style="text-align: center;"><b>Get Ready to start</b></p>
+            
+            <p>Players in game: {{players.length}}</p>         
         </div>  
              
         <div id="timerArea" flex="33" layout="vertical" layout-align="center center" ng-class="">
