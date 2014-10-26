@@ -1,6 +1,12 @@
+<div class="multipler" ng-if="multipler && multipler > 0">
+    <p>Complete this game for x{{multipler}} points!</p>
+</div>
+
 <div class="whoThis">
+  
+    <h1 style="text-align:center">Concentrate on the picture then answer the question</h1>
 		<div class="instructions">
-			<p>Concentrate on the picture then answer the question</p><h4>Points left <strong>{{points}}</strong></h4>
+			<h4 style="text-align:center">Points left <strong>{{points}}</strong></h4>
 		</div>
 		<div class="center">
 				<img class="guessImage" id="showImg" ng-src="img/{{level.img}}.jpg" />
@@ -8,7 +14,7 @@
 
 		<br>
 		<div id="showMe">
-			<p>Question: {{level.question}}</p>
+			<p style="text-align:center">Question: {{level.question}}</p>
 			
 			<button ng-repeat="answer in level.answers" ng-click="checkAnswer($index)">
 				{{answer}}

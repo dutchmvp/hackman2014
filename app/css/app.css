@@ -1,6 +1,4 @@
 /*# sourceMappingURL=app.css.map */
-@import url(http://fonts.googleapis.com/css?family=Lobster);
-@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
 body {
   font-size: 14px;
   background-color: #fafafa;
@@ -93,6 +91,12 @@ body footer {
   padding-left: 10px;
   height: 50px;
   width: 200px;
+}
+.startingBlock .error {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 5px;
+  width: 70%;
 }
 .startingBlock md-button {
   font-size: 16px;

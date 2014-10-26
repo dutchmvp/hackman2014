@@ -37,6 +37,14 @@
   transition: all 2s linear;
 }
 
+.multipler {
+  display: block;
+  padding: 10px;
+  background: tomato;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
 ul {
   padding: 0px;
   margin: 0px;

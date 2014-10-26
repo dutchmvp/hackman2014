@@ -5,9 +5,15 @@ angular.module('FSUGame.controllers')
     	var difficulty = 500;
         
         // give chance of multiplier
+        $scope.multipler = false;
+        
         var multiplierChance = Math.random();
-        if (multiplierChance < 0.2) {
-            
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
         }
     	
     	$scope.points = 10;
@@ -82,6 +88,10 @@ angular.module('FSUGame.controllers')
 		
 		$scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -101,6 +111,18 @@ angular.module('FSUGame.controllers')
     }])
     .controller('ctrlGame2', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
    		var difficulty = 500;
+        
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
     	
     	$scope.points = 10;
     	
@@ -143,6 +165,10 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -163,6 +189,18 @@ angular.module('FSUGame.controllers')
     }])
     .controller('ctrlGame3', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 		var difficulty = 500;
+        
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
     	
     	$scope.points = 10;
     	
@@ -219,6 +257,10 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -239,6 +281,18 @@ angular.module('FSUGame.controllers')
     }])
     .controller('ctrlGame4', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 		var difficulty = 800;
+        
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
     	
     	$scope.points = 10;
     	
@@ -299,6 +353,10 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -321,6 +379,18 @@ angular.module('FSUGame.controllers')
     .controller('ctrlGame5', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 		var difficulty = 800;
     	
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
+        
     	$scope.points = 10;
     	
     	var pointsTimer = setInterval(function() {
@@ -377,6 +447,10 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -401,6 +475,19 @@ angular.module('FSUGame.controllers')
     
     	$scope.readyToPlay = false;
     	var difficulty = 1000;
+        
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
+        
 		$scope.Levels = [];
     	
     	$scope.Levels.push({ "level" : 1,
@@ -456,6 +543,10 @@ angular.module('FSUGame.controllers')
 		$scope.moveOn = function (points) {
 			console.log('moveon called');
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -479,6 +570,19 @@ angular.module('FSUGame.controllers')
     .controller('ctrlGame7', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
         $scope.dontShow = true;
         var difficulty = 800;
+        
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
+        
 		$scope.Levels = [];
     	
     	$scope.Levels.push({ "level" : 1,
@@ -558,6 +662,10 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			
@@ -628,7 +736,9 @@ angular.module('FSUGame.controllers')
 			}
 			
 			$location.path("/game/" + goToGame);
+
 */
+
 		
     }])
 
@@ -641,8 +751,24 @@ angular.module('FSUGame.controllers')
         $scope.hideNumber = false;
         $scope.points = 10;
         
+        // give chance of multiplier
+        $scope.multipler = false;
+        
+        var multiplierChance = Math.random();
+        console.log(multiplierChance);
+        if (multiplierChance < 0.25) {
+            $scope.multipler = 3;
+        }
+        else if (multiplierChance < 0.35) {
+            $scope.multipler = 2;
+        }
+        
         $scope.moveOn = function (points) {
 			if (typeof $rootScope.connection != "undefined") {
+                if ($scope.multipler) {
+                    points = points * $scope.multipler;   
+                }
+                
 				$rootScope.connection.client.score += points;
 			}
 			

@@ -1,17 +1,21 @@
+<div class="multipler" ng-if="multipler && multipler > 0">
+    <p>Complete this game for x{{multipler}} points!</p>
+</div>
+
 <section id="gameTemplate" class="countTo10" flex>
   
-   <h2>Count to {{countTo}}</h2>
+   <h1 style="text-align:center">Count to {{countTo}}</h1>
    
    <div layout="horizontal">
        
       
        <div class="instructions" flex="70">
-    <p>Keep counting and press the button when you think {{countTo}} seconds has passed</p>
+    <p style="text-align:center">Keep counting and press the button when you think {{countTo}} seconds has passed</p>
 			
         </div>
         
         <div class="points" flex="30">
-            <h4>Points left <strong>{{points}}</strong></h4>
+<!--            <h4>Points left <strong>{{points}}</strong></h4>-->
         </div>
        
    </div>
