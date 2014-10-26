@@ -590,6 +590,11 @@ angular.module('FSUGame.controllers')
 			}
 			
 			$location.path("/game/" + goToGame);
+      
+        
+        
+        
+        
 		
     }])
 
