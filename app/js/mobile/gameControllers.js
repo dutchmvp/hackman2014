@@ -610,16 +610,6 @@ angular.module('FSUGame.controllers')
 					  		 "correct": 3,
 					  		 "question": "What colour was the car in front",
 					  		 "answers": ["Blue", "Purple", "Black", "White"]});
-	    $scope.Levels.push({ "level" : 6,
-					  		 "img" : "womanshopping",
-					  		 "correct": 0,
-					  		 "question": "What colour dress was the women wearing",
-					  		 "answers": ["Blue", "Purple", "Black", "White"]});
-	    $scope.Levels.push({ "level" : 7,
-					  		 "img" : "womanshopping",
-					  		 "correct": 0,
-					  		 "question": "What colour dress was the women looking at",
-					  		 "answers": ["Red", "Orange", "Yellow", "Purple"]});
 					  		 
 		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
 		$scope.level = $scope.Levels[levelNumber];
