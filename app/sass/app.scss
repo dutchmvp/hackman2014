@@ -223,7 +223,7 @@ body {
     
     #playersArea {
         background:#dcedc8;
-        height: 460px;
+        height: 100%;
         width:100%;
         padding:0px 2% 0 2%;
         position: relative;
@@ -303,7 +303,7 @@ body {
         
         .player10 {
           top:370px;
-         left:51%;
+          left:51%;
             
         }
         
@@ -312,11 +312,13 @@ body {
         
         .player {
             background:#fff;
-            position: absolute;
-            width:45%;
+            position: relative;
+            width:48%;
+            margin:0 auto;
+            margin-bottom: 10px;
             
           
-              -webkit-transition:all ease 0.5s;
+            -webkit-transition:all ease 0.5s;
             -moz-transition:all ease 0.5s;
             -ms-transition:all ease 0.5s;
             -o-transition:all ease 0.5s;
@@ -393,32 +395,13 @@ body {
 }
 
 
-.repeat-enter-setup, .repeat-leave-setup, .repeat-move-setup {
-    -webkit-transition:all linear 1s;
-    -moz-transition:all linear 1s;
-    -ms-transition:all linear 1s;
-    -o-transition:all linear 1s;
-    transition:all linear 1s;
+.animate-enter, .animate-move {
+    -webkit-transition: 0.5s linear all; /* Chrome */
+    transition: 0.5s linear all;
+    opacity: 0;
 }
-.repeat-enter-setup {
-    max-height: 0;
-    opacity:0;
-}
-.repeat-enter-setup.repeat-enter-start {
-    max-height: 250px;
-    opacity:1;
-}
-.repeat-leave-setup {
-    opacity:1;
-    max-height: 250px;
-}
-.repeat-leave-setup.repeat-leave-start {
-    opacity:0;
-    max-height: 0;
-}
-.repeat-move-setup {
-}
-.repeat-move-setup.repeat-move-start {
+.animate-enter.animate-enter-active,.animate-move.animate-move-active {
+    opacity: 1;
 }
 
 @import '_games.scss';

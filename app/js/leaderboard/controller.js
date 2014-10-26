@@ -1,5 +1,14 @@
 angular.module('FSUGame.controllers')
 
+    .directive('removeClass', function(){
+        return {
+            restrict: 'A',
+            link: function(scope,element, attrs){
+                element.removeClass(attrs.removeClass);
+            }
+        };
+    })
+
     .controller('ctrlCreateGame', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
 		$rootScope.game = {
             $id: null,
@@ -79,8 +88,11 @@ angular.module('FSUGame.controllers')
                 for (var i = 0; i < $scope.players.length; i++) {                    
                     if ($scope.players[i].key == player.client.key) {
                         $scope.players[i].score = player.client.score;
+                        
                     }
                 }
+                
+                $scope.$apply();
             });
             
             setInterval(function() {

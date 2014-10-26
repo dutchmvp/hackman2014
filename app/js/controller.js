@@ -31,6 +31,7 @@ angular.module('FSUGame.controllers', [])
                 // update users score
                 GameService.updateScore($rootScope.connection.$id, $rootScope.connection).then(function(response) {
                     // score updated!  
+                    $scope.$apply();
                 });
             }
         });
