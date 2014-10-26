@@ -76,7 +76,7 @@ angular.module('FSUGame.services', [])
                 
                 connection.$loaded().then(function() {   
                     service.getConnection(id).then(function(response) {                        
-                        deferral.resolve(connection.$remove(response.$id));
+                        deferral.resolve(connection.$remove(response));
                     });
                 });
                 

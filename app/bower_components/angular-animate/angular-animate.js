@@ -1012,7 +1012,7 @@ angular.module('ngAnimate', ['ng'])
           var cache = element.data(STORAGE_KEY);
           if (cache) {
             if (cache.add) cache.add = cache.add.concat(add);
-            cache.remove = cache.remove.concat(remove);
+            if (cache.remove) cache.remove = cache.remove.concat(remove);
 
             //the digest cycle will combine all the animations into one function
             return cache.promise;
