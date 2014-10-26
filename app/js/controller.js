@@ -8,6 +8,8 @@ angular.module('FSUGame.controllers', [])
           if(Modernizr.touch){
             $rootScope.mobile = true;
           };
+          
+		  
         
     }])
 

@@ -1,6 +1,4 @@
-.container {
-	max-width: 420px;
-}
+
 
 .animate {
 	-webkit-transition: all 2s linear;
@@ -178,4 +176,8 @@ ul {
 	width: 100%;
 	display: block;
 	text-align: center;
+}
+
+.md-button-inner {
+	height: 60px !important;
 }
