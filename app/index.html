@@ -20,7 +20,7 @@
 <body ng-cloak>
     <main ng-controller="ctrlApp" class="container">
     	<header id="mainHeader">
-            <img class="avatar" ng-if="user.key && user.name" ng-src="http://robohash.org/{{user.key}}.png?set=set1&size=46x46"  layout-align="left center" /><div flex layout="horizontal"><p ng-if="user.name" class="playerName" flex="70">{{user.name}}</p><div class="playerDetail" layout-align="right" flex="30" ng-if="user.score > 0"><img ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" class="smallTrophy" /></div></div>
+            <img class="avatar" ng-if="user.key && user.name" ng-src="http://robohash.org/{{user.key}}.png?set=set1&size=46x46"  layout-align="left center" /><p ng-if="user.name" class="playerName">{{user.name}}</p><div class="playerDetail" layout-align="right"  ng-if="user.score > 0"><img ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" class="smallTrophy" /></div></div>
     	</header>
         
 		<div ng-view class="mainView">

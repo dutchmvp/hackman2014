@@ -573,7 +573,7 @@ angular.module('FSUGame.controllers')
 			
 		}
     }])
-    .controller('ctrlGame8', ['$scope', function ($scope) {
+    .controller('ctrlGame8', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 			var notMyGame = false;
 			
 			while (notMyGame == false) {

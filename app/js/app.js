@@ -3,7 +3,7 @@
 angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGame.services','ngMaterial','ngMessages','ngAnimate'])
 
     .constant('FIREBASE_URI', 'https://hackman2014.firebaseio.com/')
-    .constant('amountOfGames', 7)
+    .constant('amountOfGames', 9)
 
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
