@@ -1,3 +1,38 @@
-<h1>Array of lights, select which one went different</h1>
 
 
+
+<section id="gameTemplate" class="countTo10" flex>
+  
+  <h1>Array of lights, select which one went different</h1>
+   
+   <div layout="horizontal">
+       
+      
+       <div class="instructions" flex="70">
+            <p>Watch the lights and tell us which one was different</p>
+			
+        </div>
+        
+        <div class="points" flex="30">
+            <h4>Points left <strong>{{points}}</strong></h4>
+        </div>
+       
+   </div>
+   
+   <div layout="horizontal" layout-align="center">
+       
+    
+       
+       
+       
+   </div>
+   
+    <div layout="horizontal" layout-align="center">
+    
+    <md-button class="guessCountButtton md-theme-green" ng-click="guessNumber(count)" flex="50">Press me</md-button>
+       
+    
+    
+    </div>
+    
+</section>

@@ -222,7 +222,7 @@ body {
     
     #playersArea {
         background:#dcedc8;
-        height: 100%;
+        height: 460px;
         width:100%;
         padding:0px 2% 0 2%;
         position: relative;
@@ -311,10 +311,15 @@ body {
         
         .player {
             background:#fff;
-            position: relative;
-            width:50%;
-            margin:0 auto;
-            margin-bottom: 10px;
+            position: absolute;
+            width:45%;
+            
+          
+              -webkit-transition:all ease 0.5s;
+            -moz-transition:all ease 0.5s;
+            -ms-transition:all ease 0.5s;
+            -o-transition:all ease 0.5s;
+            transition:all ease 0.5s;
             
             
             
@@ -386,19 +391,32 @@ body {
     
 }
 
-
-.animate-repeat.ng-move {
-  -webkit-transition:all ease 0.5s;
-  transition:all ease 0.5s;
+.repeat-enter-setup, .repeat-leave-setup, .repeat-move-setup {
+    -webkit-transition:all linear 1s;
+    -moz-transition:all linear 1s;
+    -ms-transition:all linear 1s;
+    -o-transition:all linear 1s;
+    transition:all linear 1s;
 }
-
-
-
-.repeat-animation.ng-enter,
-.repeat-animation.ng-leave,
-.repeat-animation.ng-move {
-  -webkit-transition:0.5s linear all;
-  transition:0.5s linear all;
+.repeat-enter-setup {
+    max-height: 0;
+    opacity:0;
+}
+.repeat-enter-setup.repeat-enter-start {
+    max-height: 250px;
+    opacity:1;
+}
+.repeat-leave-setup {
+    opacity:1;
+    max-height: 250px;
+}
+.repeat-leave-setup.repeat-leave-start {
+    opacity:0;
+    max-height: 0;
+}
+.repeat-move-setup {
+}
+.repeat-move-setup.repeat-move-start {
 }
 
 @import '_games.scss';
