@@ -133,13 +133,7 @@ angular.module('FSUGame.controllers')
             
         };
         
-        $scope.stopGameMusic = function() {
-            
-            document.getElementById('backgroundMusic').stop();
-            
-            
-        };
-        
+      
         
 
             $scope.startGame = function() {
@@ -149,7 +143,7 @@ angular.module('FSUGame.controllers')
                     GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                 
                         var timeoutFunc = function() {
                             
-                            $scope.playGameMusic();
+                           
                             $rootScope.$apply(function(){
                                 $rootScope.game.timeLeft--;
                             });
@@ -171,7 +165,7 @@ angular.module('FSUGame.controllers')
                                     // game end
                                     $scope.nearEnd = false;
                                     $rootScope.game.gameStatus = 'Winner';
-                                    $scope.stopGameMusic();
+                                    
                                 }
                             }
 

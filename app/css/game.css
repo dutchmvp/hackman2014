@@ -50,6 +50,9 @@ ul {
   margin: 0px;
 }
 
+h1 {
+    font-size:15px;
+}
 .instructions p {
   display: inline-block;
   width: 60%;
