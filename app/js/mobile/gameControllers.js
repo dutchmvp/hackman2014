@@ -496,6 +496,64 @@ angular.module('FSUGame.controllers')
     .controller('ctrlGame9', ['$scope', function ($scope) {
 		console.log('Game Nine');
     }])
-    .controller('ctrlGame10', ['$scope', function ($scope) {
-		console.log('Game Ten');
+    .controller('ctrlGame10', ['$scope', '$location', '$rootScope', 'amountOfGames','$interval', function ($scope, $location, $rootScope, amountOfGames,$interval) {
+		
+            
+        $scope.count = 0;
+        $scope.countTo = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+        $scope.guess = 0;
+        $scope.hideNumber = false;
+        $scope.points = 10;
+        
+        $scope.moveOn = function (points) {
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+		
+			$location.path("/game/" + goToGame);
+		}
+        
+        $scope.guessNumber = function(count) {
+  
+            var guessed = count;
+            
+            
+            
+            if(guessed == $scope.countTo) {
+                
+                
+                $interval.cancel(timer);
+                $scope.moveOn(10); 
+                
+            } else if(guessed == ($scope.countTo-1) || ($scope.countTo+1))  {
+                
+                $interval.cancel(timer);
+                $scope.moveOn(5); 
+            } else {
+                
+                $interval.cancel(timer);
+                $scope.moveOn(0); 
+                
+            }
+            
+        }
+ 
+        var timer = $interval(function() {
+           $scope.count++;
+            
+            if($scope.count >= 5) {
+                
+                $scope.hideNumber = true;
+                
+            }
+        
+            if($scope.count == $scope.countTo){
+                console.log('stop')
+                $interval.cancel(timer);
+            }
+            
+        },480);
+        
     }]);

@@ -360,6 +360,7 @@ body {
     
 }
 
+
 #waitingForGame {
     height:100px;
      p {
@@ -385,10 +386,13 @@ body {
     
 }
 
+
 .animate-repeat.ng-move {
   -webkit-transition:all ease 0.5s;
   transition:all ease 0.5s;
 }
+
+
 
 .repeat-animation.ng-enter,
 .repeat-animation.ng-leave,
@@ -396,3 +400,5 @@ body {
   -webkit-transition:0.5s linear all;
   transition:0.5s linear all;
 }
+
+@import '_games.scss';

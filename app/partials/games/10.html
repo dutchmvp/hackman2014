@@ -1,1 +1,36 @@
-<h1>Count to ten</h1>
+<section id="gameTemplate" class="countTo10" flex>
+  
+   <h2>Count to {{countTo}}</h2>
+   
+   <div layout="horizontal">
+       
+      
+       <div class="instructions" flex="70">
+    <p>Keep counting and press the button when you think {{countTo}} seconds has passed</p>
+			
+        </div>
+        
+        <div class="points" flex="30">
+            <h4>Points left <strong>{{points}}</strong></h4>
+        </div>
+       
+   </div>
+   
+   <div layout="horizontal" layout-align="center">
+       
+       <div class="counter" ng-hide="hideNumber == true">
+           {{count}}
+       </div>
+       
+       
+       
+   </div>
+   
+    <div layout="horizontal" layout-align="center">
+    <md-button class="guessCountButtton md-theme-green" ng-click="guessNumber(count)" flex="50">Press me</md-button>
+       
+    
+    
+    </div>
+    
+</section>

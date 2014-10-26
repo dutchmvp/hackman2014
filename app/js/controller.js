@@ -9,7 +9,7 @@ angular.module('FSUGame.controllers', [])
     }])
 
     .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
-       
+      
         
         $rootScope.user = {
             $id: null,
