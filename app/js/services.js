@@ -62,6 +62,9 @@ angular.module('FSUGame.services', [])
                 
                 return deferral.promise; 
             },
+            getAllConnections: function() {
+                return connection.$loaded();
+            },
             getConnection: function(id) {
                 var deferral = $q.defer();
                 
@@ -75,8 +78,9 @@ angular.module('FSUGame.services', [])
                 var deferral = $q.defer();
                 
                 connection.$loaded().then(function() {   
-                    service.getConnection(id).then(function(response) {                        
-                        deferral.resolve(connection.$remove(response));
+                    service.getConnection(id).then(function(response) {
+                        connection.$remove(response);
+                        deferral.resolve(response);
                     });
                 });
                 
@@ -105,7 +109,7 @@ angular.module('FSUGame.services', [])
             onScoreUpdate: function(id, callback) {
                 connectionRef.on('child_changed', function (snapshot) {
                     var player = snapshot.val();
-                    
+                                        
                     if (player.gameId == id && typeof callback == 'function') {
                         callback(snapshot.val());
                     }

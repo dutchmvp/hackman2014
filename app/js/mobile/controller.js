@@ -57,7 +57,7 @@ angular.module('FSUGame.controllers')
         
         $scope.leaveGame = function() {
             GameService.leaveConnection($rootScope.connection.$id).then(function(response) {
-                console.log(response);
+                $rootScope.$broadcast('player-left', { player: response });
                 $location.path('/mobile/');
             });
         };

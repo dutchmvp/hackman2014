@@ -1,12 +1,12 @@
 <section id="leaderBoardView">
    <div class="row" layout="horizontal" flex style="padding-bottom:10px;" class="md-whiteframe-z1">           
         <div class="gameControls" layout="horizontal" flex="33" layout-align="center center">
-            <md-button class="md-theme-green" ng-click="startGame()" flex="50" >Start the game</md-button>
+            <md-button class="md-theme-green" ng-click="startGame()" ng-if="game.gameStatus == 'Lobby'" flex="50" >Start the game</md-button>
         </div> 
        
         <div class="gameInfo" layout="vertical" layout-align="center center" flex="33">       
-            <p ng-if="game.gameState.Lobby">Waiting for players to  join the game</p>
-            <p ng-if="game.gameState.Waiting">Get Ready to start</p>              
+            <p ng-if="game.gameStatus == 'Lobby'">Waiting for players to  join the game</p>
+            <p ng-if="game.gameStatus == 'Waiting'">Get Ready to start</p>              
             <p>Players in game {{players.length}}</p>         
         </div>  
              
