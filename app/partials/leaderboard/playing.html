@@ -15,7 +15,7 @@
         </div>
     </div>
     
-    <div class="row" layout="horizontal" flex>
+    <div class="row" layout="horizontal" flex style="margin-bottom: 15px">
         <div id="playersArea" layout="vertical" ng-if="!winner.name">
             <div ng-if="players.length == 0" layout="horizontal" layout-align="center center">
               <div class="waitingForPlayers">
@@ -27,7 +27,7 @@
 
                 <md-list flex ng-if="players.length > 0">
 
-                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player" ng-animate="{enter: 'animate-enter', move: 'animate-move', leave: 'animate-leave'}">
+                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player">
 
                         <div class="md-tile-left">
 

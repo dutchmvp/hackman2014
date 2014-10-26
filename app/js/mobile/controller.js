@@ -86,8 +86,20 @@ angular.module('FSUGame.controllers')
         });
     }])
 
-    .controller('ctrlWinner', ['$scope', function($scope) {
-        $scope.winner = {
-            name: 'Ben'  
-        };
+    .controller('ctrlWinner', ['$scope', '$rootScope', 'GameService', '$location', function($scope, $rootScope, GameService, $location) {
+        if (!$rootScope.game) {
+            $location.path('/mobile/');
+            return;
+        }
+        
+        GameService.getAllConnections().then(function(connections) {
+            $scope.highestScore = 0;
+
+            for (var i = 0; i < connections.length; i++) {                    
+                if (connections[i].gameId == $rootScope.game.$id && connections[i].client.score > $scope.highestScore) {
+                    $scope.highestScore = connections[i].client.score;
+                    $scope.winner = connections[i].client;
+                }
+            }
+        });
     }]);

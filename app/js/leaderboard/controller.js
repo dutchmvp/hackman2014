@@ -58,7 +58,14 @@ angular.module('FSUGame.controllers')
         var refreshInterval;
         
         $scope.annouceWinner = function() {
-             
+            $scope.highestScore = 0;
+            
+             for (var i = 0; i < $scope.players.length; i++) {                    
+                if ($scope.players[i].score > $scope.highestScore) {
+                    $scope.winner = $scope.players[i];
+                    $scope.highestScore = $scope.players[i].score;
+                }
+            }
         };
         
         $scope.players = [];

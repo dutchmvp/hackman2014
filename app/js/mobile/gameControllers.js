@@ -79,7 +79,16 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 1) {
+				    notMyGame = true;
+			    }
+			}
+			
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
@@ -132,7 +141,16 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 2) {
+				    notMyGame = true;
+			    }
+			}
+			
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
@@ -199,7 +217,17 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 3) {
+				    notMyGame = true;
+			    }
+			}
+			
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
@@ -269,7 +297,16 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 4) {
+				    notMyGame = true;
+			    }
+			}
+			
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
@@ -338,7 +375,16 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 5) {
+				    notMyGame = true;
+			    }
+			}
+
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
@@ -381,10 +427,18 @@ angular.module('FSUGame.controllers')
 		$scope.pressArray = 0;
 		
 		$scope.pressSimon = function (selected) {
+		console.log('simon pressed');
 			if ($scope.readyToPlay == true) {
 				if (selected != $scope.level.pattern[$scope.pressArray]) {
 					$scope.moveOn(0);
-				} 
+					console.log('incorrect');
+				} else {
+					$scope.elements[selected].style.opacity = 1;
+					setTimeout(function() {
+						$scope.elements[selected].style.opacity = 0.5;
+					}, 300)
+					console.log('correct');
+				}
 				
 				$scope.pressArray ++;
 				
@@ -395,14 +449,23 @@ angular.module('FSUGame.controllers')
 		}
 		
 		$scope.moveOn = function (points) {
-		
+			console.log('moveon called');
 			if (typeof $rootScope.connection != "undefined") {
 				$rootScope.connection.client.score += points;
 			}
 			
 			clearInterval(playGame);
     		
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 6) {
+				    notMyGame = true;
+			    }
+			}
+    		
 			$location.path("/game/" + goToGame);
 		}
 					  		 
@@ -471,7 +534,7 @@ angular.module('FSUGame.controllers')
 
 		    	
 		    	
-		}, 1000);
+		}, 3000);
 		
 		$scope.checkAnswer = function (theindex) {
 			if (theindex == $scope.level.correct) {
@@ -493,7 +556,16 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 7) {
+				    notMyGame = true;
+			    }
+			}
+			
 			clearInterval(pointsTimer);
 			document.getElementById('showImg').style.display = "block";
 			document.getElementById('showMe').style.display = "none";
@@ -502,13 +574,21 @@ angular.module('FSUGame.controllers')
 		}
     }])
     .controller('ctrlGame8', ['$scope', function ($scope) {
-		$scope.getAmount = Math.floor((Math.random() * 20));
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 8) {
+				    notMyGame = true;
+			    }
+			}
+			
+			$location.path("/game/" + goToGame);
 		
     }])
-    .controller('ctrlGame9', ['$scope', function ($scope) {
-		console.log('Game Nine');
-    }])
-    .controller('ctrlGame10', ['$scope', '$location', '$rootScope', 'amountOfGames','$interval', function ($scope, $location, $rootScope, amountOfGames,$interval) {
+
+    .controller('ctrlGame9', ['$scope', '$location', '$rootScope', 'amountOfGames','$interval', function ($scope, $location, $rootScope, amountOfGames,$interval) {
 		
             
         $scope.count = 0;
@@ -522,7 +602,15 @@ angular.module('FSUGame.controllers')
 				$rootScope.connection.client.score += points;
 			}
 			
-			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 9) {
+				    notMyGame = true;
+			    }
+			}
 		
 			$location.path("/game/" + goToGame);
 		}
@@ -530,8 +618,7 @@ angular.module('FSUGame.controllers')
         $scope.guessNumber = function(count) {
   
             var guessed = count;
-            
-            
+
             
             if(guessed == $scope.countTo) {
                 
