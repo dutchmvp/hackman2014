@@ -1,1 +1,15 @@
-<h1>Who is this - blur of celeb</h1>
+<div class="whoThis">
+		<div class="instructions">
+			<p>Who is the celebrity</p><h4>Points left <strong>{{points}}</strong></h4>
+		</div>
+		<div class="center">
+				<img class="blur" ng-src="img/{{level.img}}" />
+		</div>
+
+		<br>
+		<button ng-repeat="button in level.buttons" ng-click="checkAnswer($index)">
+			{{button}}
+		</button>
+</div>
+		
+<!--filter: blur(0px);-->

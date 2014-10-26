@@ -1,5 +1,6 @@
 angular.module('FSUGame.controllers', [])
 
+<<<<<<< HEAD
     .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', function ($scope, $rootScope, GameService) {
         $rootScope.isMobile = false;
         
@@ -16,6 +17,20 @@ angular.module('FSUGame.controllers', [])
                 });
             }
         });
+=======
+    .controller('ctrlApp', ['$scope','$rootScope', function ($scope,$rootScope) {
+        
+        
+        function is_touch_device() {
+          return !!('ontouchstart' in window);
+        }
+        
+            
+        if(!is_touch_device()){
+            $scope.gamedevice = 'desktop';
+        }
+
+>>>>>>> FETCH_HEAD
     }])
 
     .controller('ctrlHome', ['$scope', function ($scope) {
