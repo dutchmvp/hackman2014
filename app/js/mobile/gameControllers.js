@@ -1,6 +1,6 @@
 angular.module('FSUGame.controllers')
 
-    .controller('ctrlGame1', ['$scope', '$location', function ($scope, $location) {
+    .controller('ctrlGame1', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
     
     	var difficulty = 500;
     	
@@ -76,13 +76,14 @@ angular.module('FSUGame.controllers')
 		
 		
 		$scope.moveOn = function (points) {
-			var goToGame = Math.floor((Math.random() * 11) + 1);
+			var goToGame = 2;
+            $rootScope.connection.client.score += 100;
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
 		
     }])
-    .controller('ctrlGame2', ['$scope', '$location', function ($scope, $location) {
+    .controller('ctrlGame2', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 		var difficulty = 500;
     	
     	$scope.points = 10;
@@ -127,7 +128,8 @@ angular.module('FSUGame.controllers')
     	
     	$scope.moveOn = function (points) {
     		//Add points to element
-			var goToGame = Math.floor((Math.random() * 11) + 1);
+			var goToGame = 1;
+            $rootScope.connection.client.score += 100;
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}

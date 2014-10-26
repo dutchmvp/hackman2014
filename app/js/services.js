@@ -46,10 +46,41 @@ angular.module('FSUGame.services', [])
                 games.remove(gameObject.$id);
             },
             join: function(id, clientObject) {
-                return connection.$add({
-                    'gameId': id,
-                    'client': clientObject
+                var deferral = $q.defer(),
+                    connectionObject = {
+                        'gameId': id,
+                        'client': clientObject
+                    };
+                
+                connection.$add(connectionObject).then(function(response) {
+                    connection.$loaded().then(function() {
+                        connectionObject = connection.$getRecord(response.name());
+                                                
+                        deferral.resolve(connectionObject);
+                    });
                 });
+                
+                return deferral.promise; 
+            },
+            getConnection: function(id) {
+                var deferral = $q.defer();
+                
+                connection.$loaded().then(function() {
+                    deferral.resolve(connection.$getRecord(id));
+                });
+                
+                return deferral.promise;
+            },
+            updateScore: function(id, object) {
+                var deferral = $q.defer();
+                
+                connection.$loaded().then(function() {   
+                    service.getConnection(id).then(function(response) {                             
+                        deferral.resolve(connection.$save(response));
+                    });
+                });
+                
+                return deferral.promise;
             },
             onJoin: function(id, callback) {
                 connectionRef.on('child_added', function (snapshot) {
@@ -59,6 +90,15 @@ angular.module('FSUGame.services', [])
                         callback(snapshot.val());
                     }
                 });
+            },
+            onScoreUpdate: function(id, callback) {
+                connectionRef.on('child_changed', function (snapshot) {
+                    var player = snapshot.val();
+                    
+                    if (player.gameId == id && typeof callback == 'function') {
+                        callback(snapshot.val());
+                    }
+                });    
             }
         };
         
