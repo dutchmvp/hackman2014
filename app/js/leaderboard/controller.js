@@ -105,7 +105,7 @@ angular.module('FSUGame.controllers')
                             if ($rootScope.game.timeLeft < 1) {
                                 if ($rootScope.game.gameStatus == 'Waiting') {
                                     // start game
-                                    $rootScope.game.timeLeft = 10;
+                                    $rootScope.game.timeLeft = 60;
                                     $rootScope.game.gameStatus = 'Playing';
                                 }
                                 else {

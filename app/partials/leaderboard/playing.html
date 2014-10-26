@@ -41,7 +41,7 @@
             </div>
                 <md-list flex ng-if="players.length > 0">
 
-                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player player{{$index+1}}" ng-class="{ wining: $index + 1 == 1 && game.gameStatus == Playing}">
+                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player">
 
                         <div class="md-tile-left">
 
