@@ -10,8 +10,8 @@
             <p>Players in game {{players.length}}</p>         
         </div>  
              
-        <div id="timerArea" flex="33" layout="vertical" layout-align="center center" ng-class="">
-            <span >{{game.timeLeft|formatTimer}}</span>
+        <div id="timerArea" flex="33" layout="vertical" layout-align="center center" ng-class="" ng-if="game.gameStatus == 'Waiting' || game.gameStatus == 'Playing'">
+            <span>{{game.timeLeft|formatTimer}}</span>
         </div>
     </div>
     
