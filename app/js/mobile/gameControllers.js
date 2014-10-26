@@ -1,6 +1,6 @@
 angular.module('FSUGame.controllers')
 
-    .controller('ctrlGame1', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+    .controller('ctrlGame1', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
     
     	var difficulty = 500;
     	
@@ -76,14 +76,18 @@ angular.module('FSUGame.controllers')
 		
 		
 		$scope.moveOn = function (points) {
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
 			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
 		
     }])
-    .controller('ctrlGame2', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
-		var difficulty = 500;
+    .controller('ctrlGame2', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
+   		var difficulty = 500;
     	
     	$scope.points = 10;
     	
@@ -126,14 +130,17 @@ angular.module('FSUGame.controllers')
 		});
     	
     	$scope.moveOn = function (points) {
-    		//Add points to element
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
 			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
     	
     }])
-    .controller('ctrlGame3', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+    .controller('ctrlGame3', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 		var difficulty = 500;
     	
     	$scope.points = 10;
@@ -191,13 +198,16 @@ angular.module('FSUGame.controllers')
 		});
     	
     	$scope.moveOn = function (points) {
-    		//Add points to element
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
 			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
 		}
     }])
-    .controller('ctrlGame4', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+    .controller('ctrlGame4', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 		var difficulty = 800;
     	
     	$scope.points = 10;
@@ -259,7 +269,10 @@ angular.module('FSUGame.controllers')
 		});
     	
     	$scope.moveOn = function (points) {
-    		//Add points to element
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
 			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
@@ -267,7 +280,7 @@ angular.module('FSUGame.controllers')
 		
 		
     }])
-    .controller('ctrlGame5', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+    .controller('ctrlGame5', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
 		var difficulty = 800;
     	
     	$scope.points = 10;
@@ -326,7 +339,10 @@ angular.module('FSUGame.controllers')
 		});
     	
     	$scope.moveOn = function (points) {
-    		//Add points to element
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
 			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
 			$location.path("/game/" + goToGame);
@@ -335,24 +351,56 @@ angular.module('FSUGame.controllers')
 		
 
     }])
-    .controller('ctrlGame6', ['$scope', function ($scope) {
-    	var difficulty = 500;
+    .controller('ctrlGame6', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
+    	var difficulty = 1000;
 		$scope.Levels = [];
     	
     	$scope.Levels.push({ "level" : 1,
-					  		 "pattern" : [2,1,3,0,1,1]})
+					  		 "pattern" : [2,1,3,0,1,1]});
 		$scope.Levels.push({ "level" : 2,
-					  		 "pattern" : [1,1,0,2,2,3]})
+					  		 "pattern" : [1,1,0,2,2,3]});
+		$scope.Levels.push({ "level" : 3,
+					  		 "pattern" : [3,2,3,0,1,3]});
 					  		 
 		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
 		$scope.level = $scope.Levels[levelNumber];
 		
 		var playArray = 0;
-		var elements = document.getElementsByClassName()
+		$scope.elements = document.getElementsByClassName('simonElement');
 		
 		var playGame = setInterval(function() {
 			var lightUpElement = $scope.level.pattern[playArray]
+			$scope.elements[lightUpElement].style.opacity = 1;
+			setTimeout(function () {
+				$scope.elements[lightUpElement].style.opacity = 0.5;
+			}, difficulty-100)
+			playArray++
+			if (playArray >= $scope.level.pattern.length) {
+				clearInterval(playGame)
+			}
 		}, difficulty)
+		
+		$scope.pressArray = 0;
+		
+		$scope.pressSimon = function (selected) {
+			if (selected != $scope.level.pattern[$scope.pressArray]) {
+				$scope.moveOn(0);
+			} 
+			
+			$scope.pressArray ++;
+		}
+		
+		$scope.moveOn = function (points) {
+		
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
+			clearInterval(playGame);
+    		
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			$location.path("/game/" + goToGame);
+		}
 					  		 
 
     }])
