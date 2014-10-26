@@ -18,13 +18,14 @@ angular.module('FSUGame.controllers', [])
         });
 
         $rootScope.$watch('connection.client.score', function(value) {
-        if ($rootScope.isMobile && $rootScope.connection) { 
-            // update users score
-            GameService.updateScore($rootScope.connection.$id, $rootScope.connection).then(function(response) {
-                // score updated!  
-            });
-        }
-    })
+            if ($rootScope.isMobile && $rootScope.connection) { 
+                // update users score
+                GameService.updateScore($rootScope.connection.$id, $rootScope.connection).then(function(response) {
+                    // score updated!  
+                });
+            }
+        })
+    }])
 
     .controller('ctrlHome', ['$scope', function ($scope) {
 		
