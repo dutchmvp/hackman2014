@@ -1,1 +1,14 @@
-<h1>What is there more of</h1>
+<div class="howMany">
+		<div class="instructions">
+			<p>which item has the most</p><h4>Points left <strong>{{points}}</strong></h4>
+		</div>
+		<div class="center">
+				<img ng-src="img/{{level.img}}" />
+		</div>
+
+		<br>
+		<button ng-repeat="button in level.buttons" ng-click="checkAnswer($index)">
+			{{button}}
+		</button>
+</div>
+		

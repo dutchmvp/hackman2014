@@ -1,27 +1,22 @@
 .animate {
   -webkit-transition: all 2s linear;
-  transition: all 2s linear;
-}
+  transition: all 2s linear; }
 
 ul {
   padding: 0px;
-  margin: 0px;
-}
+  margin: 0px; }
 
 .instructions p {
   display: inline-block;
   width: 60%;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 .instructions h4 {
   display: inline-block;
   width: 40%;
   vertical-align: middle;
-  text-align: right;
-}
-.instructions h4 strong {
-  color: blue;
-}
+  text-align: right; }
+  .instructions h4 strong {
+    color: blue; }
 
 .whichLargest li {
   list-style: none;
@@ -34,12 +29,10 @@ ul {
   margin-bottom: 20px;
   border-radius: 10px;
   line-height: 60px;
-  transition: display 2s linear;
-}
-.whichLargest li img {
-  width: 150px;
-  height: 150px;
-}
+  transition: display 2s linear; }
+  .whichLargest li img {
+    width: 150px;
+    height: 150px; }
 
 .mathMania li {
   list-style: none;
@@ -54,8 +47,7 @@ ul {
   margin-bottom: 20px;
   border-radius: 10px;
   line-height: 60px;
-  transition: display 2s linear;
-}
+  transition: display 2s linear; }
 
 .howMany button {
   display: inline-block;
@@ -70,8 +62,7 @@ ul {
   margin-bottom: 20px;
   border-radius: 10px;
   line-height: 60px;
-  transition: display 2s linear;
-}
+  transition: display 2s linear; }
 
 .whoThis button {
   display: inline-block;
@@ -86,21 +77,17 @@ ul {
   margin-bottom: 20px;
   border-radius: 10px;
   line-height: 60px;
-  transition: display 2s linear;
-}
+  transition: display 2s linear; }
 .whoThis .blur {
-  -webkit-animation: blur 4s linear;
-}
+  -webkit-animation: blur 4s linear; }
 
 @-webkit-keyframes blur {
   0% {
-    -webkit-filter: blur(15px);
-  }
+    -webkit-filter: blur(15px); }
 
   100% {
-    -webkit-filter: blur(0px);
-  }
-}
+    -webkit-filter: blur(0px); } }
+
 .spotDifference li {
   list-style: none;
   display: inline-block;
@@ -112,12 +99,10 @@ ul {
   margin-bottom: 20px;
   border-radius: 10px;
   line-height: 60px;
-  transition: display 2s linear;
-}
-.spotDifference li img {
-  width: 150px;
-  height: 150px;
-}
+  transition: display 2s linear; }
+  .spotDifference li img {
+    width: 150px;
+    height: 150px; }
 
 .simonSays li {
   list-style: none;
@@ -125,27 +110,23 @@ ul {
   width: 48%;
   height: 120px;
   margin: 1%;
-  opacity: 0.4;
-}
+  opacity: 0.4; }
 .simonSays .topLeft {
   background: blue;
-  border-top-left-radius: 40px;
-}
+  border-top-left-radius: 40px; }
 .simonSays .topRight {
   background: red;
-  border-top-right-radius: 40px;
-}
+  border-top-right-radius: 40px; }
 .simonSays .bottomLeft {
   background: yellow;
-  border-bottom-left-radius: 40px;
-}
+  border-bottom-left-radius: 40px; }
 .simonSays .bottomRight {
   background: green;
-  border-bottom-right-radius: 40px;
-}
+  border-bottom-right-radius: 40px; }
 
 .center {
   width: 100%;
   display: block;
-  text-align: center;
-}
+  text-align: center; }
+
+/*# sourceMappingURL=game.css.map */

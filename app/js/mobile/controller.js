@@ -2,7 +2,7 @@ angular.module('FSUGame.controllers')
 
     .controller('ctrlJoinGame', ['$scope', '$rootScope', '$location', 'GameService', 'ClientService', function ($scope, $rootScope, $location, GameService, ClientService) {
         $scope.state = 0;
-        $rootScope.connectionId = null;
+        $rootScope.connection = null;
         
         // Create player details
         $rootScope.user = {
@@ -63,24 +63,21 @@ angular.module('FSUGame.controllers')
         
         // join game
         GameService.join($routeParams.gameId, $rootScope.user).then(function(response) {
-            $scope.connectionId = response.name();
+            $rootScope.connection = response;
 
             // get game details
             GameService.get($routeParams.gameId).then(function(response) {
-                $scope.game = response;
+                $rootScope.game = response;
                 
-                $scope.$watch('game.gameStatus', function(value) {
+                $rootScope.$watch('game.gameStatus', function(value) {
                     switch(value) {
                         case 'Lobby':
                             
                         break;
                         case 'Playing':
                             // go to first game
-                            var goToGame = Math.floor((Math.random() * 10) + 1);
+                            var goToGame = 1;
                             $location.path('/game/' + goToGame);
-                        break;
-                        case 'Winner':
-                            alert('Annouce the winner'); 
                         break;
                         default:
                             // just wait
@@ -89,4 +86,10 @@ angular.module('FSUGame.controllers')
                 });
             });
         });
-    }]);
+    }])
+
+    .controller('ctrlWinner', function() {
+        $scope.winner = {
+            name: 'Ben'  
+        };
+    });

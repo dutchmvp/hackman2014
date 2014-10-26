@@ -3,6 +3,7 @@
 angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGame.services','ngMaterial','ngMessages'])
 
     .constant('FIREBASE_URI', 'https://hackman2014.firebaseio.com/')
+    .constant('amountOfGames', 5)
 
     .config(function ($routeProvider) {
         $routeProvider.when('/', {
@@ -14,6 +15,10 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
 		.when('/mobile', {
             controller: 'ctrlJoinGame',
             templateUrl: 'partials/mobile/joinGame.html'
+        })
+        .when('/mobile/winner', {
+            controller: 'ctrlWinner',
+            templateUrl: 'partials/mobile/winner.html'
         })
         .when('/startGame/:gameId', {
             controller: 'ctrlStartGame',
@@ -68,6 +73,10 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
         .when('/game/10', {
             controller: 'ctrlGame10',
             templateUrl: 'partials/games/10.html'
+        })
+        .when('/game/11', {
+            controller: 'ctrlGame11',
+            templateUrl: 'partials/games/11.html'
         })
         
         // fallback

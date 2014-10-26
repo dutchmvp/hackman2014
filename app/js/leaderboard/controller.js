@@ -8,8 +8,6 @@ angular.module('FSUGame.controllers')
             timeLeft: 10
         };
         
-        
-        
         var gameNameCheck = function(gameName) {
             if (gameName && gameName.length > 3) {
                 document.getElementById('createGame').classList.add('enabled');
@@ -77,58 +75,59 @@ angular.module('FSUGame.controllers')
                 $scope.players.push(player.client);
             });
             
+            GameService.onScoreUpdate($rootScope.game.$id, function(player) {
+                 console.log(player);
+            });
+            
             if ($rootScope.game.gameStatus == 'Winner') {
                 $scope.annouceWinner();
             }
 
             $scope.startGame = function() {
-                
-                if($scope.players.length >= 1) {
-                $rootScope.game.gameStatus = 'Waiting';
-                
-                GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                 
-                    var timeoutFunc = function() {
-                        $rootScope.$apply(function(){
-                            $rootScope.game.timeLeft--;
-                        });
-                        
-                        if ($rootScope.game.timeLeft < 20) {
-                            $scope.nearEnd = true;   
-                        }
+                if ($scope.players.length >= 1) {
+                    $rootScope.game.gameStatus = 'Waiting';
 
-                        // time has run out!
-                        if ($rootScope.game.timeLeft < 1) {
-                            if ($rootScope.game.gameStatus == 'Waiting') {
-                                // start game
-                                $rootScope.game.timeLeft = 10;
-                                $rootScope.game.gameStatus = 'Playing';
-                            }
-                            else {
-                                // game end
-                                $rootScope.game.gameStatus = 'Winner';
-                            }
-                        }
+                    GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                 
+                        var timeoutFunc = function() {
+                            $rootScope.$apply(function(){
+                                $rootScope.game.timeLeft--;
+                            });
 
-                        // update game for everyone
-                        GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                        
-                            if ($rootScope.game.gameStatus != 'Winner') {
-                                $timeout(timeoutFunc, 1000);
+                            if ($rootScope.game.timeLeft < 20) {
+                                $scope.nearEnd = true;   
                             }
-                            else {
-                                // send to winner page
-                                $scope.annouceWinner();
+
+                            // time has run out!
+                            if ($rootScope.game.timeLeft < 1) {
+                                if ($rootScope.game.gameStatus == 'Waiting') {
+                                    // start game
+                                    $rootScope.game.timeLeft = 10;
+                                    $rootScope.game.gameStatus = 'Playing';
+                                }
+                                else {
+                                    // game end
+                                    $rootScope.game.gameStatus = 'Winner';
+                                }
                             }
-                        });
-                    };
-                        
-                    $timeout(timeoutFunc, 1000);
-                    
-              
-                });
-                    
-                      } else {
-                        alert('not enough players');
-                     }
+
+                            // update game for everyone
+                            GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                        
+                                if ($rootScope.game.gameStatus != 'Winner') {
+                                    $timeout(timeoutFunc, 1000);
+                                }
+                                else {
+                                    // send to winner page
+                                    $scope.annouceWinner();
+                                }
+                            });
+                        };
+
+                        $timeout(timeoutFunc, 1000);
+                    });
+                }
+                else {
+                    alert('Not enough players to start the game');
+                }
             };
         });
     }]);
