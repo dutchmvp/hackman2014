@@ -4,13 +4,10 @@ angular.module('FSUGame.controllers')
         $scope.state = 0;
         $rootScope.connection = null;
         
-        // Create player details
-        $rootScope.user = {
-            $id: null,
-            name: null,
-            score: 0,
-            key: Math.random().toString(36).substring(2, 5)
-        };
+        if ($rootScope.user.name && $rootScope.user.name.length > 0) {
+            // user already has name so move on...
+            $scope.state = 1;
+        }
 
         var usernameCheck = function(username) {            
             if (username && username.length > 3) {

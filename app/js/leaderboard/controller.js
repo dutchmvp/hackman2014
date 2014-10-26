@@ -49,7 +49,7 @@ angular.module('FSUGame.controllers')
         var refreshInterval;
         
         $scope.annouceWinner = function() {
-            //$scope.winner.name = 'Ben';  
+             
         };
         
         $scope.players = [];
