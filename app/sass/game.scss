@@ -211,11 +211,32 @@ ul {
 .makeItRain {
 	position: relative;
 	
+	ul {
+		display: block;
+		height: 400px;
+		width: 100%;
+	}
+	
 	.money {
 		background-image: url('../img/dollar.jpg');
 		width: 200px;
 		height: 100px;
+		position: absolute;
+		top: 50%;
+		margin-top: -50px;
+		left:0px;
 	}
+	
+	.animateMoney {
+	  -webkit-animation: movementMoney 1s linear;
+	  z-index: 101 !important;
+	}
+
+}
+
+@-webkit-keyframes movementMoney {
+	  0%,  { left: 0px; }
+	  100% { left: 400px;}
 }
 
 .center {
@@ -230,4 +251,14 @@ ul {
 
 .md-button-inner {
 	height: 60px !important;
+}
+
+.btnDone {
+	width: 100px;
+	height: 40px;
+	font-size: 20px;
+	background: #999;
+	color: white;
+	border: none;
+	border-radius: 10px;
 }

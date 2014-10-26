@@ -579,6 +579,29 @@ angular.module('FSUGame.controllers')
 		}
     }])
     .controller('ctrlGame8', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
+    
+    	$scope.getNumber = Math.floor((Math.random() * 20));
+    	$scope.swipedNumber = 0;
+    	$scope.swipedRight = function () {
+	    	$scope.moneyElements[$scope.swipedNumber].className = $scope.moneyElements[$scope.swipedNumber].className + " animateMoney";
+	    	$scope.swipedNumber++;
+    	}
+    	
+    	$scope.moneyElements = document.getElementsByClassName('money');
+    	
+    	$scope.moneyDone = function () {
+	    	if ($scope.swipedNumber == $scope.getNumber) {
+		    	$scope.moveOn(10);
+	    	} else {
+		    	$scope.moveOn(0);
+	    	}
+    	}
+    	
+    	$scope.moveOn = function (points) {
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
 			var notMyGame = false;
 			
 			while (notMyGame == false) {
@@ -590,6 +613,22 @@ angular.module('FSUGame.controllers')
 			}
 			
 			$location.path("/game/" + goToGame);
+			
+		}
+    	
+/*
+			var notMyGame = false;
+			
+			while (notMyGame == false) {
+    			console.log('while loop ran');
+			    var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			    if (goToGame != 8) {
+				    notMyGame = true;
+			    }
+			}
+			
+			$location.path("/game/" + goToGame);
+*/
 		
     }])
 
