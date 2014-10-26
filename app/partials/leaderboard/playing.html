@@ -1,4 +1,15 @@
 <section id="leaderBoardView">
+    <div class="row" layout="horizontal" flex ng-if="winner.name" style="margin-top: 10px">
+        <div id="winnersArea" layout="vertical" flex>
+           <div offset="30" flex="60" class="winningMessage" layout-padding>
+               <img ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" class="winningTrphy" />
+
+                <h2>{{winner.name}} is the winner with a score of {{highestScore}}</h2>
+               
+                <a href="/#/leaderboard/">Create a new game</a>
+            </div> 
+        </div>
+    </div>
    <div class="row" layout="horizontal" flex style="padding-bottom:10px;" class="md-whiteframe-z1">           
         <div class="gameControls" layout="horizontal" flex="33" layout-align="center center">
             <md-button class="md-theme-green" ng-click="startGame()" ng-if="game.gameStatus == 'Lobby'" flex="50" >Start the game</md-button>
@@ -16,7 +27,7 @@
     </div>
     
     <div class="row" layout="horizontal" flex>
-        <div id="playersArea" layout="vertical" ng-if="!winner.name">
+        <div id="playersArea" layout="vertical">
             <div ng-if="players.length == 0" layout="horizontal" layout-align="center center">
               <div class="waitingForPlayers">
                   <md-progress-circular mode="indeterminate"></md-progress-circular>
@@ -47,17 +58,6 @@
                         </div>
                 </md-item-content>
             </md-list>
-        </div>
-        
-        <div id="winnersArea" layout="vertical" ng-if="winner.name" flex>
-           <div offset="30" flex="60" class="winningMessage" layout-padding>
-               <img ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" class="winningTrphy" />
-
-                <h2>Well done {{winner.name}} you just beat every one</h2>
-                <p>Dave the duck says well done but pipe down and try to win again i dare ya</p>
-               
-                <a href="/#/leaderboard/">Create a new game</a>
-            </div> 
         </div>
     </div>
 </section>
