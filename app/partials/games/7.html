@@ -3,13 +3,15 @@
 			<p>Who is the celebrity</p><h4>Points left <strong>{{points}}</strong></h4>
 		</div>
 		<div class="center">
-				<img class="guessImage" ng-show="dontShow" ng-src="img/{{level.img}}.jpg" />
+				<img class="guessImage" id="showImg" ng-src="img/{{level.img}}.jpg" />
 		</div>
 
 		<br>
-		<p ng-hide="dontShow">Question: {{level.question}}</p>
-		
-		<button ng-repeat="answer in level.answers" ng-click="checkAnswer($index)" ng-hide="dontShow">
-			{{answer}}
-		</button>
+		<div id="showMe">
+			<p>Question: {{level.question}}</p>
+			
+			<button ng-repeat="answer in level.answers" ng-click="checkAnswer($index)">
+				{{answer}}
+			</button>
+		</div>
 </div>

@@ -410,7 +410,7 @@ angular.module('FSUGame.controllers')
     }])
     .controller('ctrlGame7', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
         $scope.dontShow = true;
-        var difficulty = 500;
+        var difficulty = 800;
 		$scope.Levels = [];
     	
     	$scope.Levels.push({ "level" : 1,
@@ -456,14 +456,22 @@ angular.module('FSUGame.controllers')
 		
 		setTimeout(function() {
 			$scope.dontShow = false;
+			
 			    $scope.points = 10;
 		    	
 		    	var pointsTimer = setInterval(function() {
 		    		$scope.$apply(function(){
+		    			
 						$scope.points--;
 					});
-		    	}, difficulty)
-		}, 800);
+		    	}, 800)
+
+			    	document.getElementById('showMe').style.display = "block";
+			    	document.getElementById('showImg').style.display = "none";
+
+		    	
+		    	
+		}, 1000);
 		
 		$scope.checkAnswer = function (theindex) {
 			if (theindex == $scope.level.correct) {
@@ -487,11 +495,15 @@ angular.module('FSUGame.controllers')
 			
 			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
 			clearInterval(pointsTimer);
+			document.getElementById('showImg').style.display = "block";
+			document.getElementById('showMe').style.display = "none";
 			$location.path("/game/" + goToGame);
+			
 		}
     }])
     .controller('ctrlGame8', ['$scope', function ($scope) {
-		console.log('Game Eight');
+		$scope.getAmount = Math.floor((Math.random() * 20));
+		
     }])
     .controller('ctrlGame9', ['$scope', function ($scope) {
 		console.log('Game Nine');
