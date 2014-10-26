@@ -27,7 +27,7 @@
 
                 <md-list flex ng-if="players.length > 0">
 
-                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player">
+                    <md-item-content ng-repeat="player in players | orderBy:'score':true" class="player" ng-class="{winning: $index+1 == 1}">
 
                         <div class="md-tile-left">
 
@@ -50,7 +50,7 @@
         </div>
         
         <div id="winnersArea" layout="vertical" ng-if="winner.name" flex>
-           <div offset="30" flex="60" class="winningMessage" layout-padding>
+           <div offset="25" flex="70" class="winningMessage" layout-padding>
                <img ng-src="http://png-2.findicons.com/files/icons/2799/flat_icons/256/trophy.png" class="winningTrphy" />
 
                 <h2>Well done {{winner.name}} you just beat every one</h2>

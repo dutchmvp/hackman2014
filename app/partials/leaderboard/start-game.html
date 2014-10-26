@@ -4,9 +4,9 @@
 
         <p flex="80">Enter a game name and then click the button below to start up a game and then connect via your mobile and start when your and your friends are ready</p>
 
-        <input type="text" ng-model="game.name" id="createGame" ng-model-options="{ debounce : 500 }" />
+        <input type="text" ng-model="game.name" id="createGame" ng-model-options="{ debounce : 500 }" placeholder="Enter Game Name"/>
         <span class="error" id="gameNameError" style="display: none"></span>
 
-        <md-button ariaLabel="Start Game" ng-click="startGame()" class="startGameBtn md-theme-green">Start Game</md-button>
+        <md-button ariaLabel="Start Game" ng-click="startGame()">Create a Game</md-button>
     </div>
 </section>
