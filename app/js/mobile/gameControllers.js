@@ -267,8 +267,73 @@ angular.module('FSUGame.controllers')
 		
 		
     }])
-    .controller('ctrlGame5', ['$scope', function ($scope) {
-		console.log('Game Five');
+    .controller('ctrlGame5', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
+		var difficulty = 80000;
+    	
+    	$scope.points = 10;
+    	
+    	var pointsTimer = setInterval(function() {
+    		$scope.$apply(function(){
+				$scope.points--;
+			});
+    	}, difficulty)
+    	
+    	$scope.Levels = [];
+    	
+    	$scope.Levels.push({ "level" : 1,
+					  "different" : 0,
+					  "img": "discovery"})
+		$scope.Levels.push({ "level" : 2,
+					  "different" : 1,
+					  "img": "ella"})
+		$scope.Levels.push({ "level" : 3,
+					  "different" : 2,
+					  "img": "holly"})
+		$scope.Levels.push({ "level" : 4,
+					  "different" : 3,
+					  "img": "katyperry"})
+		$scope.Levels.push({ "level" : 5,
+					  "different" : 0,
+					  "img": "kellybrook"})
+		$scope.Levels.push({ "level" : 6,
+					  "different" : 1,
+					  "img": "mcdonald"})
+					  
+		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
+		$scope.level = $scope.Levels[levelNumber];
+		
+		setTimeout(function() {
+			var differentElement = document.getElementsByClassName('differentImages');
+			differentElement[$scope.level.different].src="img/" + $scope.level.img + 'different.jpg';
+		})
+
+		
+		$scope.checkAnswer = function (theindex) {
+			console.log(theindex, $scope.level.different);
+			if (theindex == $scope.level.different) {
+				$scope.moveOn($scope.points);
+			} else {
+				console.log('incorrect');
+				alert ('incorrect');
+				$scope.moveOn(0);
+			}
+		}
+		
+		$scope.$watch('points', function() {
+			if ($scope.points < 0) {
+				$scope.checkAnswer('youLose', 10000);
+			}
+		});
+    	
+    	$scope.moveOn = function (points) {
+    		//Add points to element
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			clearInterval(pointsTimer);
+			$location.path("/game/" + goToGame);
+		}
+		
+		
+
     }])
     .controller('ctrlGame6', ['$scope', function ($scope) {
 		console.log('Game Six');
