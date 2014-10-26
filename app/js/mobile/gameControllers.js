@@ -268,7 +268,7 @@ angular.module('FSUGame.controllers')
 		
     }])
     .controller('ctrlGame5', ['$scope', '$location', 'amountOfGames', function ($scope, $location, amountOfGames) {
-		var difficulty = 80000;
+		var difficulty = 800;
     	
     	$scope.points = 10;
     	
@@ -336,7 +336,24 @@ angular.module('FSUGame.controllers')
 
     }])
     .controller('ctrlGame6', ['$scope', function ($scope) {
-		console.log('Game Six');
+    	var difficulty = 500;
+		$scope.Levels = [];
+    	
+    	$scope.Levels.push({ "level" : 1,
+					  		 "pattern" : [2,1,3,0,1,1]})
+		$scope.Levels.push({ "level" : 2,
+					  		 "pattern" : [1,1,0,2,2,3]})
+					  		 
+		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
+		$scope.level = $scope.Levels[levelNumber];
+		
+		var playArray = 0;
+		
+		var playGame = setInterval(function() {
+			var lightUpElement = $scope.level.pattern[playArray;]
+		}, difficulty)
+					  		 
+
     }])
     .controller('ctrlGame7', ['$scope', function ($scope) {
 		console.log('Game Seven');

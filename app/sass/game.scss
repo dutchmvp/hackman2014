@@ -3,6 +3,11 @@
 	transition: all 2s linear;
 }
 
+ul {
+	padding: 0px;
+	margin: 0px;
+}
+
 .instructions {
 	p {
 		display: inline-block;
@@ -129,6 +134,37 @@
 			width: 150px;
 			height: 150px;
 		}
+	}
+}
+
+.simonSays {
+	li {
+		list-style: none;
+		display: inline-block;
+		width: 48%;
+		height: 120px;
+		margin: 1%;
+		opacity: 0.4;
+	}
+	
+	.topLeft {
+		background: blue;
+		border-top-left-radius: 40px;
+	}
+	
+	.topRight {
+		background: red;
+		border-top-right-radius: 40px;
+	}
+	
+	.bottomLeft {
+		background: yellow;
+		border-bottom-left-radius: 40px;
+	}
+	
+	.bottomRight {
+		background: green;
+		border-bottom-right-radius: 40px;
 	}
 }
 
