@@ -1,10 +1,15 @@
 <div class="mathMania">
-	<h1>Math Mania</h1>
-	<div class="instructions">
-		<p>Remove the numbers until {{level.amount}} is left</p><h4>Points left <strong>{{points}}</strong></h4>
-	<ul>
-		<li class="animate" ng-repeat="selectNumber in level.numbers" ng-click="removeElement($event, selectNumber)">
-			{{selectNumber}}
-		</li>
-	</ul>
+
+        <h1 style="text-align:center">Math Mania</h1>
+        <div class="instructions">
+            <p>Remove the numbers until {{level.amount}} is left</p><h4>Points left <strong>{{points}}</strong></h4>
+
+        </div>
+   
+        <ul>
+            <li class="animate" ng-repeat="selectNumber in level.numbers" ng-click="removeElement($event, selectNumber)">
+                {{selectNumber}}
+            </li>
+        </ul>
+   
 </div>

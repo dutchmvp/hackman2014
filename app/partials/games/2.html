@@ -1,11 +1,12 @@
 <div class="whichLargest">
+     <h1 style="text-align:center">Which is the largest</h1>
 		<div class="instructions">
-			<p>Which is the largest</p><h4>Points left <strong>{{points}}</strong></h4>
+			<h4 style="text-align:center">Points left <strong>{{points}}</strong></h4>
 		</div>
 		<ul>
 			<li ng-repeat="img in level.images" ng-click="checkAnswer($index)">
-				<img ng-src="img/{{img}}.jpg" />
+				<img ng-src="img/{{img}}.jpg" style="border-radius:4px;"/>
 			</li>
 		</ul>
-	<ul>
+	
 </div>
