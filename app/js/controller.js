@@ -1,5 +1,16 @@
 angular.module('FSUGame.controllers', [])
 
+
+    .controller('ctrlApp', ['$scope','$rootScope', function ($scope,$rootScope) {
+        
+        $rootScope.mobile = false;
+        
+          if(Modernizr.touch){
+            $rootScope.mobile = true;
+          };
+        
+    }])
+
     .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
         function is_touch_device() {
           return !!('ontouchstart' in window);
@@ -11,6 +22,7 @@ angular.module('FSUGame.controllers', [])
         
         // mobile watching
         $rootScope.isMobile = false;
+
 
         $rootScope.$watch('connection', function() {
             // only mobile has a connection

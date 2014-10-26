@@ -11,7 +11,7 @@ angular.module('FSUGame.controllers')
             score: 0,
             key: Math.random().toString(36).substring(2, 5)
         };
-        
+
         var usernameCheck = function(username) {            
             if (username && username.length > 3) {
                 document.getElementById('continueButton').classList.add('enabled');

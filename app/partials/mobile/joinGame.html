@@ -1,19 +1,33 @@
-<div class="joinGame" ng-if="state == 0">
-    <label>
-        <span>Select a username:</span>
+
+
+
+<section id="joinGame" layout="horizontal" layout-padding ng-if="state == 0">
+    <div flex="80" offset="10" layout="vertical" class="joinGameBlock" layout-align="center center">
+      
+      
+       <label class="usernameTitle">Select a username:</label>
         <input type="text" ng-model="user.name" ng-model-options="{ debounce : 500 }" />
         <span class="error" id="usernameError"></span>
-    </label>
+        
+       
+        
+        <md-button ariaLabel="Enter your name" ng-click="continueButton()" id="continueButton" layout="vertical" layout-align="center center" class="startGameBtn md-theme-green">Continue</md-button> 
     
-    <a ng-click="continueButton()" id="continueButton">Continue</a>
-</div>
+    </div>
+</section>
 
-<div class="joinGame" ng-if="state == 1">
-	<ul>
-        <li ng-repeat="game in games" ng-click="joinGame(game.$id)">
-            {{game.name}}
-        </li>
-    </ul>
+
+
+<section id="gamesList" ng-if="state == 1" layout="vertical">
+<md-content>
+	<md-list>
+        <md-item-content  layout-align="center" ng-repeat="game in games" ng-click="joinGame(game.$id)" class="gameListItem" > 
+            <md-button>  {{game.name}} </md-button>
+        </md-item-content>
+    </md-list>
     
-    <p ng-show="games.length < 1">There are currently no games</p>
-</div>
+    <p class="nogames" ng-show="games.length < 1">There are currently no games</p>
+    
+    </md-content>
+</section>
+
