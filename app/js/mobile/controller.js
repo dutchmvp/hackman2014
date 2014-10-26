@@ -8,7 +8,8 @@ angular.module('FSUGame.controllers')
         $rootScope.user = {
             $id: null,
             name: null,
-            score: 0
+            score: 0,
+            key: Math.random().toString(36).substring(2, 5)
         };
         
         var usernameCheck = function(username) {            
@@ -50,7 +51,7 @@ angular.module('FSUGame.controllers')
         };
     }])
 
-    .controller('ctrlStartGame', ['$scope', '$rootScope', '$location', '$routeParams', 'GameService', function ($scope, $rootScope, $location, $routeParams, GameService) {        
+    .controller('ctrlStartGame', ['$scope', '$rootScope', '$location', '$routeParams', 'GameService', 'amountOfGames', function ($scope, $rootScope, $location, $routeParams, GameService, amountOfGames) {        
         if (!$rootScope.user || $rootScope.user.$id == null || !$routeParams.gameId) {
             // user has no details or no game ID - cannot join
             $location.path('/mobile/');
@@ -67,12 +68,9 @@ angular.module('FSUGame.controllers')
                 
                 $rootScope.$watch('game.gameStatus', function(value) {
                     switch(value) {
-                        case 'Lobby':
-                            
-                        break;
                         case 'Playing':
                             // go to first game
-                            var goToGame = 1;
+                            var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
                             $location.path('/game/' + goToGame);
                         break;
                         default:
@@ -84,8 +82,8 @@ angular.module('FSUGame.controllers')
         });
     }])
 
-    .controller('ctrlWinner', function() {
+    .controller('ctrlWinner', ['$scope', function($scope) {
         $scope.winner = {
             name: 'Ben'  
         };
-    });
+    }]);
