@@ -43,7 +43,7 @@ body {
 // css for the create game view
 .startingBlock {
     
-    background:#212121;
+    background:#006064;
     margin-top: 80px;
     
     h1 {
@@ -182,6 +182,26 @@ body {
         padding:0px 2% 0 2%;
         position: relative;
         
+        .waitingForPlayers {
+            margin-top: 80px;
+            
+            md-progress-circular {
+                
+                margin-left: 86px;
+            }
+            
+            .inset {
+                background:#dcedc8;
+            }
+            
+            p {
+                font-size: 18px;
+                line-height: 20px;
+                font-weight: bold;
+                
+            }
+        }
+        
         .player1 {
            top:10px;
            left:10px;           
@@ -291,5 +311,24 @@ body {
          text-align: center;
          
      }   
+    
+}
+
+#waitingForGame {
+    height:100px;
+     p {
+         color:#006064;
+         margin-top:30px;
+         font-size:18px;
+     }
+
+        h2 {
+            text-align: center;
+        }
+    
+        .timer {
+            font-size:150px;
+          
+        }
     
 }
