@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+.winningMessage {
+  text-align: center;
+}
+
 .animate {
   -webkit-transition: all 2s linear;
   transition: all 2s linear;
