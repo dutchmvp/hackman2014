@@ -77,6 +77,10 @@ angular.module('FSUGame.controllers')
                 $scope.players.push(player.client);
             });
             
+            GameService.onScoreUpdate($rootScope.game.$id, function(player) {
+                 console.log(player);
+            });
+            
             if ($rootScope.game.gameStatus == 'Winner') {
                 $scope.annouceWinner();
             }

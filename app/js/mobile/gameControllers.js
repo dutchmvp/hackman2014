@@ -348,9 +348,10 @@ angular.module('FSUGame.controllers')
 		$scope.level = $scope.Levels[levelNumber];
 		
 		var playArray = 0;
+		var elements = document.getElementsByClassName()
 		
 		var playGame = setInterval(function() {
-			var lightUpElement = $scope.level.pattern[playArray;]
+			var lightUpElement = $scope.level.pattern[playArray]
 		}, difficulty)
 					  		 
 
