@@ -68,7 +68,7 @@ angular.module('FSUGame', ['ngRoute', 'firebase', 'FSUGame.controllers', 'FSUGam
         })
         .when('/game/9', {
             controller: 'ctrlGame9',
-            templateUrl: 'partials/games/9.html'
+            templateUrl: 'partials/games/10.html'
         })
         .when('/game/10', {
             controller: 'ctrlGame10',
