@@ -41,6 +41,8 @@ angular.module('FSUGame.controllers')
                 // create game
                 GameService.create($rootScope.game).then(function(response) {
                     $rootScope.game.$id = response.$id;
+                    
+                    
                                         
                     $location.path('/leaderboard/' + $rootScope.game.$id);
                 });
@@ -123,6 +125,22 @@ angular.module('FSUGame.controllers')
             if ($rootScope.game.gameStatus == 'Winner') {
                 $scope.annouceWinner();
             }
+            
+            $scope.playGameMusic = function() {
+            //console.log(document.getElementById('backgroundMusic'))
+            document.getElementById('backgroundMusic').play();
+            
+            
+        };
+        
+        $scope.stopGameMusic = function() {
+            
+            document.getElementById('backgroundMusic').stop();
+            
+            
+        };
+        
+        
 
             $scope.startGame = function() {
                 if ($scope.players.length >= 1) {
@@ -130,6 +148,8 @@ angular.module('FSUGame.controllers')
 
                     GameService.update($rootScope.game.$id, $rootScope.game).then(function(response) {                 
                         var timeoutFunc = function() {
+                            
+                            $scope.playGameMusic();
                             $rootScope.$apply(function(){
                                 $rootScope.game.timeLeft--;
                             });
@@ -144,11 +164,14 @@ angular.module('FSUGame.controllers')
                                     // start game
                                     $rootScope.game.timeLeft = 60;
                                     $rootScope.game.gameStatus = 'Playing';
+                                    
+                                    
                                 }
                                 else {
                                     // game end
                                     $scope.nearEnd = false;
                                     $rootScope.game.gameStatus = 'Winner';
+                                    $scope.stopGameMusic();
                                 }
                             }
 
