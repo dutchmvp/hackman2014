@@ -3,14 +3,11 @@ angular.module('FSUGame.controllers')
     .controller('ctrlJoinGame', ['$scope', '$rootScope', '$location', 'GameService', 'ClientService', function ($scope, $rootScope, $location, GameService, ClientService) {
         $scope.state = 0;
         $rootScope.connection = null;
+        $rootScope.user.score = 0;
         
-        // Create player details
-        $rootScope.user = {
-            $id: null,
-            name: null,
-            score: 0,
-            key: Math.random().toString(36).substring(2, 5)
-        };
+        if ($rootScope.user.name && $rootScoop.user.name.length > 0) {
+            $scope.state = 2;
+        }
 
         var usernameCheck = function(username) {            
             if (username && username.length > 3) {

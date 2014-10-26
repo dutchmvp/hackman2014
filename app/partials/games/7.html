@@ -1,1 +1,15 @@
-<h1>Watch closely - Image appears, remember a detail about it</h1>
+<div class="whoThis">
+		<div class="instructions">
+			<p>Who is the celebrity</p><h4>Points left <strong>{{points}}</strong></h4>
+		</div>
+		<div class="center">
+				<img class="guessImage" ng-show="dontShow" ng-src="img/{{level.img}}.jpg" />
+		</div>
+
+		<br>
+		<p ng-hide="dontShow">Question: {{level.question}}</p>
+		
+		<button ng-repeat="answer in level.answers" ng-click="checkAnswer($index)" ng-hide="dontShow">
+			{{answer}}
+		</button>
+</div>

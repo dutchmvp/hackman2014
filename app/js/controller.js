@@ -1,14 +1,11 @@
 angular.module('FSUGame.controllers', [])
 
-
     .controller('ctrlApp', ['$scope','$rootScope', function ($scope,$rootScope) {
-        
         $rootScope.mobile = false;
-        
-          if(Modernizr.touch){
+
+        if(Modernizr.touch){
             $rootScope.mobile = true;
-          };
-        
+        };        
     }])
 
     .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
@@ -20,9 +17,15 @@ angular.module('FSUGame.controllers', [])
             $scope.gamedevice = 'desktop';
         }
         
+        $rootScope.user = {
+            $id: null,
+            name: null,
+            score: 0,
+            key: Math.random().toString(36).substring(2, 5)
+        };
+        
         // mobile watching
         $rootScope.isMobile = false;
-
 
         $rootScope.$watch('connection', function() {
             // only mobile has a connection

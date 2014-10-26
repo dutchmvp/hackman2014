@@ -63,7 +63,6 @@ angular.module('FSUGame.controllers')
 				$scope.moveOn($scope.points);
 				
 			} else if (amount < $scope.level.amount) {
-				alert ('Incorrect');
 				$scope.moveOn(0);
 			}
 		}
@@ -118,7 +117,6 @@ angular.module('FSUGame.controllers')
 			if (theindex == $scope.level.correct) {
 				$scope.moveOn($scope.points);
 			} else {
-				alert ('incorrect');
 				$scope.moveOn(0);
 			}
 		}
@@ -186,7 +184,6 @@ angular.module('FSUGame.controllers')
 			if (theindex == $scope.level.correct) {
 				$scope.moveOn($scope.points);
 			} else {
-				alert ('incorrect');
 				$scope.moveOn(0);
 			}
 		}
@@ -257,7 +254,6 @@ angular.module('FSUGame.controllers')
 			if (theindex == $scope.level.correct) {
 				$scope.moveOn($scope.points);
 			} else {
-				alert ('incorrect');
 				$scope.moveOn(0);
 			}
 		}
@@ -327,7 +323,6 @@ angular.module('FSUGame.controllers')
 				$scope.moveOn($scope.points);
 			} else {
 				console.log('incorrect');
-				alert ('incorrect');
 				$scope.moveOn(0);
 			}
 		}
@@ -352,6 +347,8 @@ angular.module('FSUGame.controllers')
 
     }])
     .controller('ctrlGame6', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
+    
+    	$scope.readyToPlay = false;
     	var difficulty = 1000;
 		$scope.Levels = [];
     	
@@ -377,17 +374,24 @@ angular.module('FSUGame.controllers')
 			playArray++
 			if (playArray >= $scope.level.pattern.length) {
 				clearInterval(playGame)
+				$scope.readyToPlay = true;
 			}
 		}, difficulty)
 		
 		$scope.pressArray = 0;
 		
 		$scope.pressSimon = function (selected) {
-			if (selected != $scope.level.pattern[$scope.pressArray]) {
-				$scope.moveOn(0);
-			} 
-			
-			$scope.pressArray ++;
+			if ($scope.readyToPlay == true) {
+				if (selected != $scope.level.pattern[$scope.pressArray]) {
+					$scope.moveOn(0);
+				} 
+				
+				$scope.pressArray ++;
+				
+				if ($scope.pressArray >= $scope.level.pattern.length) {
+					$scope.moveOn(10);
+				}
+			}
 		}
 		
 		$scope.moveOn = function (points) {
@@ -404,8 +408,87 @@ angular.module('FSUGame.controllers')
 					  		 
 
     }])
-    .controller('ctrlGame7', ['$scope', function ($scope) {
-		console.log('Game Seven');
+    .controller('ctrlGame7', ['$scope', '$location', '$rootScope', 'amountOfGames', function ($scope, $location, $rootScope, amountOfGames) {
+        $scope.dontShow = true;
+        var difficulty = 500;
+		$scope.Levels = [];
+    	
+    	$scope.Levels.push({ "level" : 1,
+					  		 "img" : "business",
+					  		 "correct": 1,
+					  		 "question": "What colour tie was the man wearing",
+					  		 "answers": ["Yellow", "Blue", "Black", "Green"]});
+    	$scope.Levels.push({ "level" : 2,
+					  		 "img" : "business",
+					  		 "correct": 2,
+					  		 "question": "What colour blouse was the women wearing",
+					  		 "answers": ["Yellow", "Blue", "White", "Black"]});
+		$scope.Levels.push({ "level" : 3,
+					  		 "img" : "business",
+					  		 "correct": 0,
+					  		 "question": "What colour shirt was the man wearing",
+					  		 "answers": ["Blue", "Purple", "White", "Black"]});
+	    $scope.Levels.push({ "level" : 4,
+					  		 "img" : "cardriving",
+					  		 "correct": 3,
+					  		 "question": "What colour shirt was the driver wearing",
+					  		 "answers": ["Blue", "Purple", "White", "Red"]});
+	    $scope.Levels.push({ "level" : 5,
+					  		 "img" : "cardriving",
+					  		 "correct": 3,
+					  		 "question": "What colour was the car in front",
+					  		 "answers": ["Blue", "Purple", "Black", "White"]});
+	    $scope.Levels.push({ "level" : 6,
+					  		 "img" : "womanshopping",
+					  		 "correct": 0,
+					  		 "question": "What colour dress was the women wearing",
+					  		 "answers": ["Blue", "Purple", "Black", "White"]});
+	    $scope.Levels.push({ "level" : 7,
+					  		 "img" : "womanshopping",
+					  		 "correct": 0,
+					  		 "question": "What colour dress was the women looking at",
+					  		 "answers": ["Red", "Orange", "Yellow", "Purple"]});
+					  		 
+		var levelNumber = Math.floor((Math.random() * $scope.Levels.length));
+		$scope.level = $scope.Levels[levelNumber];
+		
+		var pointsTimer = '';
+		
+		setTimeout(function() {
+			$scope.dontShow = false;
+			    $scope.points = 10;
+		    	
+		    	var pointsTimer = setInterval(function() {
+		    		$scope.$apply(function(){
+						$scope.points--;
+					});
+		    	}, difficulty)
+		}, 800);
+		
+		$scope.checkAnswer = function (theindex) {
+			if (theindex == $scope.level.correct) {
+				$scope.moveOn($scope.points);
+			} else {
+				console.log('incorrect');
+				$scope.moveOn(0);
+			}
+		}
+		
+		$scope.$watch('points', function() {
+			if ($scope.points < 0) {
+				$scope.checkAnswer('youLose', 10000);
+			}
+		});
+    	
+    	$scope.moveOn = function (points) {
+			if (typeof $rootScope.connection != "undefined") {
+				$rootScope.connection.client.score += points;
+			}
+			
+			var goToGame = Math.floor((Math.random() * amountOfGames) + 1);
+			clearInterval(pointsTimer);
+			$location.path("/game/" + goToGame);
+		}
     }])
     .controller('ctrlGame8', ['$scope', function ($scope) {
 		console.log('Game Eight');
