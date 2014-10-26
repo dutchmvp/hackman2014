@@ -2,15 +2,15 @@ angular.module('FSUGame.controllers', [])
 
     .controller('ctrlApp', ['$scope','$rootScope', function ($scope,$rootScope) {
         
+        $rootScope.mobile = false;
         
-        function is_touch_device() {
-          return !!('ontouchstart' in window);
-        }
+          if(Modernizr.touch){
+            $rootScope.mobile = true;
+          }
+        
         
             
-        if(!is_touch_device()){
-            $scope.gamedevice = 'desktop';
-        }
+        
 
     }])
 

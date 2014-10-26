@@ -11,6 +11,8 @@ angular.module('FSUGame.controllers')
             score: 0
         };
         
+ 
+        
         var usernameCheck = function(username) {            
             if (username && username.length > 3) {
                 document.getElementById('continueButton').classList.add('enabled');
@@ -33,6 +35,8 @@ angular.module('FSUGame.controllers')
         $scope.continueButton = function() {
             if (usernameCheck($rootScope.user.name)) {
                 $scope.state = 1;
+                
+                
             }
         };
         
