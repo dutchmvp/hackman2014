@@ -1,6 +1,6 @@
 angular.module('FSUGame.controllers', [])
 
-    .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', function ($scope, $rootScope, GameService) {
+    .controller('ctrlApp', ['$scope', '$rootScope', 'GameService', '$location', function ($scope, $rootScope, GameService, $location) {
         function is_touch_device() {
           return !!('ontouchstart' in window);
         }
@@ -24,7 +24,15 @@ angular.module('FSUGame.controllers', [])
                     // score updated!  
                 });
             }
-        })
+        });
+        
+        $rootScope.$watch('game.gameStatus', function(value) {
+            if ($rootScope.isMobile && $rootScope.connection) { 
+                if (value == 'Winner') {
+                    $location.path('/mobile/winner/');
+                }
+            }
+        });
     }])
 
     .controller('ctrlHome', ['$scope', function ($scope) {

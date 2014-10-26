@@ -82,4 +82,10 @@ angular.module('FSUGame.controllers')
                 });
             });
         });
-    }]);
+    }])
+
+    .controller('ctrlWinner', function() {
+        $scope.winner = {
+            name: 'Ben'  
+        };
+    });
