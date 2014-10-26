@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
+/*
 #mainHeader .avatar {
   width: 10%;
   display: inline-block;
@@ -20,6 +21,7 @@
   vertical-align: middle;
   margin: 0px;
 }
+*/
 #mainHeader .playerScore {
   width: 28%;
   margin-right: 2%;
