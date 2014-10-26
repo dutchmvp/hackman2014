@@ -159,6 +159,12 @@ body {
         
         md-button {
             width:80%;
+            
+             &:hover {
+                 color:#fff;
+            background:#000;
+            
+            }
         }
 
         .error {
